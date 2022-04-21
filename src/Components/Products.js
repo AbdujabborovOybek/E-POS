@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button } from "@mui/material";
 import "../Assets/Css/Products.css";
 import NumberFormat from "react-number-format";
 import { Data } from "../Data/Data";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
 import { useSelector } from "react-redux";
 
@@ -30,10 +31,13 @@ function colors(num) {
 }
 
 export function Products() {
-  const [produc, setProduc] = useState(Data);
   const search = useSelector((state) => state.reSeach);
 
-  const data = produc.filter((item) => {
+  function AddToBasket(item) {
+    alert(item.name + " added to basket");
+  }
+
+  const data = Data.filter((item) => {
     return (
       item.name.toLowerCase().includes(search.toLowerCase()) ||
       item.code
@@ -42,26 +46,6 @@ export function Products() {
     );
   });
 
-  function Count(e, type) {
-    const MyData = [...data];
-
-    MyData.map((item) => {
-      if (type === "inc") {
-        if (item.id === e.id) {
-          item.count++;
-          setProduc(MyData);
-        }
-      }
-      if (type === "dec") {
-        if (item.id === e.id) {
-          item.count < 1 ? (item.count = 0) : item.count--;
-          setProduc(MyData);
-        }
-      }
-      return item;
-    });
-  }
-
   return (
     <>
       {data.map((item, index) => {
@@ -69,18 +53,19 @@ export function Products() {
           <div id="product" key={index} style={{ background: colors(index) }}>
             <div id="product-info">
               <p>{item.name}</p>
+
+              <p>{fixAbout(item.about)}</p>
+            </div>
+            <div id="product-count">
               <NumberFormat
                 value={item.price}
                 displayType={"text"}
                 thousandSeparator={true}
-                prefix={"Uzs "}
+                prefix={"$"}
               />
-              <p>{fixAbout(item.about)}</p>
-            </div>
-            <div id="product-count">
-              <Button onClick={Count.bind(this, item, "dec")}>-</Button>
-              <p>{item.count}</p>
-              <Button onClick={Count.bind(this, item, "inc")}>+</Button>
+              <Button onClick={AddToBasket.bind(this, item)}>
+                <AddShoppingCartIcon />
+              </Button>
             </div>
           </div>
         );

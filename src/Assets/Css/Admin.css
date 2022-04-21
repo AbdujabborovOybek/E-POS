@@ -1,0 +1,17 @@
+#admin {
+  width: 100%;
+  min-height: 4.96vh;
+  max-height: 4.96vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  border-bottom: 1px solid #e0e0e09a;
+}
+
+@media (max-width: 1580px) {
+  #admin {
+    min-height: 8vh;
+    max-height: 8vh;
+  }
+}
