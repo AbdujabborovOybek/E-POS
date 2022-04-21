@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { Button } from "@mui/material";
 import "../Assets/Css/Products.css";
 import NumberFormat from "react-number-format";
@@ -29,9 +30,10 @@ function colors(num) {
 }
 
 export function Products() {
+  const [produc, setProduc] = useState(Data);
   const search = useSelector((state) => state.reSeach);
 
-  const data = Data.filter((item) => {
+  const data = produc.filter((item) => {
     return (
       item.name.toLowerCase().includes(search.toLowerCase()) ||
       item.code
@@ -39,6 +41,26 @@ export function Products() {
         .includes(search === "" ? item.code : search.toLowerCase())
     );
   });
+
+  function Count(e, type) {
+    const MyData = [...data];
+
+    MyData.map((item) => {
+      if (type === "inc") {
+        if (item.id === e.id) {
+          item.count++;
+          setProduc(MyData);
+        }
+      }
+      if (type === "dec") {
+        if (item.id === e.id) {
+          item.count < 1 ? (item.count = 0) : item.count--;
+          setProduc(MyData);
+        }
+      }
+      return item;
+    });
+  }
 
   return (
     <>
@@ -56,9 +78,9 @@ export function Products() {
               <p>{fixAbout(item.about)}</p>
             </div>
             <div id="product-count">
-              <Button>-</Button>
+              <Button onClick={Count.bind(this, item, "dec")}>-</Button>
               <p>{item.count}</p>
-              <Button>+</Button>
+              <Button onClick={Count.bind(this, item, "inc")}>+</Button>
             </div>
           </div>
         );

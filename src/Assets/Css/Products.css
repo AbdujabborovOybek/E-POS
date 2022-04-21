@@ -1,15 +1,15 @@
 #product {
-  width: 200px;
-  height: 250px;
+  width: 10.4vw;
+  height: 24.8vh;
   background: #2c9253;
-  border-radius: 7px;
-  padding: 4px;
+  border-radius: 0.4vw;
+  padding: 0.2vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   color: #fff;
-  margin: 0.5%;
+  margin: 0.4vw;
 }
 
 #product-info {
@@ -23,16 +23,17 @@
 #product-info > p {
   padding-bottom: 5px;
 }
-#product-info > span {
-  padding-bottom: 5px;
-}
 
 #product-info > :nth-child(1) {
-  font-size: 130%;
+  font-size: 1.1vw;
   width: 100%;
 }
+#product-info > span {
+  padding-bottom: 5px;
+  font-size: 0.8vw;
+}
 #product-info > :nth-child(3) {
-  font-size: 65%;
+  font-size: 0.57vw;
   width: 100%;
 }
 
@@ -48,11 +49,48 @@
 
 #product-count > button {
   background: #fff;
-  font-size: 190%;
+  font-size: 1.5vw;
   padding: 0 !important;
   margin: 0 !important;
-  height: 35px;
+  height: 3.47vh;
+  width: 6.3vh;
+  min-width: 0 !important;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 0.14vw;
+}
+
+#product-count > p {
+  font-size: 1.1vw;
+}
+
+@media (max-width: 1280px) {
+  #product {
+    width: 15vw;
+    height: 35vh;
+  }
+
+  #product-info > :nth-child(1) {
+    font-size: 1.5vw;
+    width: 100%;
+  }
+
+  #product-info > span {
+    font-size: 1.2vw;
+  }
+
+  #product-info > :nth-child(3) {
+    font-size: 0.8vw;
+  }
+
+  #product-count > button {
+    font-size: 2vw;
+    height: 4.8vh;
+    width: 9vh;
+  }
+
+  #product-count > p {
+    font-size: 1.5vw;
+  }
 }
