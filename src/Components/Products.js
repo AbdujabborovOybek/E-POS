@@ -4,8 +4,9 @@ import "../Assets/Css/Products.css";
 import NumberFormat from "react-number-format";
 import { Data } from "../Data/Data";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { addToBasket } from "../Redux/Actions/acBasket";
 
 function fixAbout(about) {
   if (about.length > 110) {
@@ -31,10 +32,13 @@ function colors(num) {
 }
 
 export function Products() {
+  const basket = useSelector((state) => state.reBasket);
   const search = useSelector((state) => state.reSeach);
+  const dispatch = useDispatch();
 
   function AddToBasket(item) {
-    alert(item.name + " added to basket");
+    dispatch(addToBasket(item));
+    localStorage.setItem("basket", JSON.stringify(basket));
   }
 
   const data = Data.filter((item) => {
