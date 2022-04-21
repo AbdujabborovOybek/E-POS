@@ -6,11 +6,10 @@ import { Admin } from "../Components/Admin";
 import { Button } from "@mui/material";
 import NumberFormat from "react-number-format";
 import { Chek } from "../Components/Chek";
-
 import { useSelector } from "react-redux";
 
 export function Router() {
-  const totalPrice = useSelector((state) => state.totalPrice);
+  const totalPrice = useSelector((state) => state.reTotalPrice);
 
   return (
     <div id="contener">

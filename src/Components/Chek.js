@@ -10,8 +10,6 @@ import RemoveIcon from "@mui/icons-material/Remove";
 export function Chek() {
   const basket = useSelector((state) => state.reBasket);
 
-  console.log(basket);
-
   return (
     <>
       {basket.map((item, index) => {

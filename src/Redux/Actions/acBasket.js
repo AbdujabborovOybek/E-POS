@@ -17,3 +17,17 @@ export function clearBasket() {
     type: "CLEAR_BASKET",
   };
 }
+
+// action increment count
+export const increment = (item) => {
+  return {
+    type: "INCREMET",
+    payload: item.id,
+  };
+};
+
+export const totalPrice = () => {
+  return {
+    type: "TOTAL_PRICE",
+  };
+};

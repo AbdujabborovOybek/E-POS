@@ -1,12 +1,12 @@
 import { createStore, combineReducers } from "redux";
 
 import { reSeach } from "./Reducer/reSeach";
-import { reBasket, totalPrice } from "./Reducer/reBasket";
+import { reBasket, reTotalPrice } from "./Reducer/reBasket";
 
 const reducer = combineReducers({
   reSeach,
   reBasket,
-  totalPrice,
+  reTotalPrice,
 });
 
 export const store = createStore(
