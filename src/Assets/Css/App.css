@@ -5,6 +5,7 @@
   font-family: sans-serif;
   letter-spacing: 0.07rem;
   user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
