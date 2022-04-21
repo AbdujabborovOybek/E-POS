@@ -1,6 +1,7 @@
 #nav {
   width: 100%;
-  height: auto;
+  height: 50px;
+  min-height: 50px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -8,7 +9,40 @@
 }
 
 #nav-menu {
+  height: 100% !important;
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+#nav-menu > button {
+  /* background: #00c3ac; */
+  margin: 0 !important;
+  height: 100%;
+  border-radius: 0 !important;
+}
+
+#nav-menu > p {
+  margin-left: 30px;
+  text-align: center;
+  font-size: 170%;
+  font-family: monospace !important;
+}
+
+#nav-search {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+#nav-search > div {
+  height: 100%;
+}
+
+#nav-search > div > input {
+  letter-spacing: 0.06rem !important;
+  padding-left: 5px;
+
+  padding-top: 10px;
 }

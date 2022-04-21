@@ -25,3 +25,17 @@
   justify-content: center;
   background: #f7f7f7;
 }
+
+#all-content {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+  overflow: auto;
+  margin-top: 5px;
+}

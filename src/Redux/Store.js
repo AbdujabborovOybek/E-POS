@@ -1,6 +1,10 @@
 import { createStore, combineReducers } from "redux";
 
-const reducer = combineReducers({});
+import { reSeach } from "./Reducer/reSeach";
+
+const reducer = combineReducers({
+  reSeach,
+});
 
 export const store = createStore(
   reducer,
