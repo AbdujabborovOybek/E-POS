@@ -34,12 +34,6 @@ export const decrement = (id) => {
   };
 };
 
-export const totalPrice = () => {
-  return {
-    type: "TOTAL_PRICE",
-  };
-};
-
 // delete item from basket
 export const deleteItem = (id) => {
   return {

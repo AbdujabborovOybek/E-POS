@@ -12,11 +12,15 @@ export function Router() {
   const [totalPrice, setTotalPrice] = useState(0);
   const basket = useSelector((state) => state.reBasket);
   useEffect(() => {
-    setTotalPrice(
-      basket.reduce((acc, item) => {
-        return acc + item.price * item.count;
-      }, 0)
-    );
+    let sum = 0;
+    if (basket.length > 0) {
+      basket.map((item) => {
+        sum += item.price * item.count;
+        return setTotalPrice(sum);
+      });
+    } else {
+      setTotalPrice(0);
+    }
   }, [basket]);
 
   return (

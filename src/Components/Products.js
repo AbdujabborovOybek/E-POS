@@ -6,7 +6,7 @@ import { Data } from "../Data/Data";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { addToBasket, increment, totalPrice } from "../Redux/Actions/acBasket";
+import { addToBasket, increment } from "../Redux/Actions/acBasket";
 
 export function Products() {
   const basket = useSelector((state) => state.reBasket);
@@ -33,8 +33,6 @@ export function Products() {
         dispatch(addToBasket(item));
       }
     }
-
-    dispatch(totalPrice());
   }
 
   const data = Data.filter((item) => {
