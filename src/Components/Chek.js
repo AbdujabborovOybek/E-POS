@@ -8,7 +8,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { useDispatch } from "react-redux";
-import { deleteItem } from "../Redux/Actions/acBasket";
+import { deleteItem, increment, decrement } from "../Redux/Actions/acBasket";
 
 export function Chek() {
   const dispatch = useDispatch();
@@ -20,6 +20,14 @@ export function Chek() {
 
   function Delete(id) {
     dispatch(deleteItem(id));
+  }
+
+  function Decrement(id) {
+    dispatch(decrement(id));
+  }
+
+  function Increment(id) {
+    dispatch(increment(id));
   }
 
   return (
@@ -41,10 +49,10 @@ export function Chek() {
               <Button onClick={Delete.bind(this, item.id)}>
                 <DeleteIcon />
               </Button>
-              <Button>
+              <Button onClick={Decrement.bind(this, item.id)}>
                 <RemoveIcon />
               </Button>
-              <Button>
+              <Button onClick={Increment.bind(this, item.id)}>
                 <AddIcon />
               </Button>
             </div>

@@ -19,10 +19,18 @@ export function clearBasket() {
 }
 
 // action increment count
-export const increment = (item) => {
+export const increment = (id) => {
   return {
     type: "INCREMET",
-    payload: item.id,
+    payload: id,
+  };
+};
+
+// action decrement count
+export const decrement = (id) => {
+  return {
+    type: "DECREMENT",
+    payload: id,
   };
 };
 

@@ -23,7 +23,7 @@ export function Products() {
       let code = true;
       basket.map((el) => {
         if (el.id === item.id) {
-          dispatch(increment(item));
+          dispatch(increment(item.id));
           code = false;
         }
         return null;

@@ -13,6 +13,14 @@ export const reBasket = (state = basket, action) => {
           return item;
         }
       });
+    case "DECREMENT":
+      return state.map((item) => {
+        if (item.id === action.payload) {
+          return { ...item, count: item.count <= 1 ? 1 : item.count - 1 };
+        } else {
+          return item;
+        }
+      });
 
     case "DELETE_ITEM":
       return state.filter((item) => item.id !== action.payload);
