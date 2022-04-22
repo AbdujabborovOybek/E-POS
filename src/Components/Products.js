@@ -34,6 +34,8 @@ export function Products() {
       }
     }
 
+    console.log(basket);
+
     dispatch(totalPrice());
   }
 

@@ -31,3 +31,11 @@ export const totalPrice = () => {
     type: "TOTAL_PRICE",
   };
 };
+
+// delete item from basket
+export const deleteItem = (id) => {
+  return {
+    type: "DELETE_ITEM",
+    payload: id,
+  };
+};

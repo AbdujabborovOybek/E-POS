@@ -6,19 +6,23 @@ import { Button } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
+import { useDispatch } from "react-redux";
+import { deleteItem } from "../Redux/Actions/acBasket";
 
 export function Chek() {
+  const dispatch = useDispatch();
   const basket = useSelector((state) => state.reBasket);
+
+  function Delete(id) {
+    dispatch(deleteItem(id));
+    localStorage.setItem("basket", JSON.stringify(basket));
+  }
 
   return (
     <>
       {basket.map((item, index) => {
         return (
-          <div
-            id="chek-product"
-            style={{ background: colors(index) }}
-            key={index}
-          >
+          <div id="chek-product" key={index}>
             <div>
               <p>{item.name}</p>
               <p>{item.count}x</p>
@@ -30,7 +34,7 @@ export function Chek() {
               />
             </div>
             <div>
-              <Button>
+              <Button onClick={Delete.bind(this, item.id)}>
                 <DeleteIcon />
               </Button>
               <Button>
@@ -45,19 +49,4 @@ export function Chek() {
       })}
     </>
   );
-}
-
-function colors(num) {
-  if (num % 2 === 0 && num % 4) {
-    return "#E85F31";
-  }
-  if (num % 2 === 0 && !(num % 4)) {
-    return "#FF9338";
-  }
-  if (num % 1 === 0 && num % 5 === 0) {
-    return "#0065AB";
-  }
-  if (num % 1 === 0 && num % 7 === 0) {
-    return "#563F59";
-  }
 }

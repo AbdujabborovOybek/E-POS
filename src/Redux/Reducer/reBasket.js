@@ -4,9 +4,11 @@ const basket = JSON.parse(localStorage.getItem("basket")) || [];
 export const reBasket = (state = basket, action) => {
   switch (action.type) {
     case "ADD_TO_BASKET":
+      localStorage.setItem(
+        "basket",
+        JSON.stringify([...state, action.payload])
+      );
       return [...state, action.payload];
-    case "REMOVE_FROM_BASKET":
-      return state.filter((item) => item.id !== action.payload);
     case "INCREMET":
       return state.map((item) => {
         if (item.id === action.payload) {
@@ -15,6 +17,10 @@ export const reBasket = (state = basket, action) => {
           return item;
         }
       });
+
+    case "DELETE_ITEM":
+      return state.filter((item) => item.id !== action.payload);
+
     default:
       return state;
   }
