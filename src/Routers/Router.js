@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../Assets/Css/Router.css";
 import { Navbar } from "../Components/Navbar";
 import { Products } from "../Components/Products";
@@ -9,7 +9,15 @@ import { Chek } from "../Components/Chek";
 import { useSelector } from "react-redux";
 
 export function Router() {
-  const totalPrice = useSelector((state) => state.reTotalPrice);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const basket = useSelector((state) => state.reBasket);
+  useEffect(() => {
+    setTotalPrice(
+      basket.reduce((acc, item) => {
+        return acc + item.price * item.count;
+      }, 0)
+    );
+  }, [basket]);
 
   return (
     <div id="contener">

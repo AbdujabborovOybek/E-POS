@@ -4,15 +4,10 @@ const basket = JSON.parse(localStorage.getItem("basket")) || [];
 export const reBasket = (state = basket, action) => {
   switch (action.type) {
     case "ADD_TO_BASKET":
-      localStorage.setItem(
-        "basket",
-        JSON.stringify([...state, action.payload])
-      );
       return [...state, action.payload];
     case "INCREMET":
       return state.map((item) => {
         if (item.id === action.payload) {
-          localStorage.setItem("basket", JSON.stringify(state));
           return { ...item, count: item.count + 1 };
         } else {
           return item;

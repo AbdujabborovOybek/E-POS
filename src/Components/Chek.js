@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import "../Assets/Css/Chek.css";
 import NumberFormat from "react-number-format";
 
@@ -13,9 +14,12 @@ export function Chek() {
   const dispatch = useDispatch();
   const basket = useSelector((state) => state.reBasket);
 
+  useEffect(() => {
+    localStorage.setItem("basket", JSON.stringify(basket));
+  }, [basket]);
+
   function Delete(id) {
     dispatch(deleteItem(id));
-    localStorage.setItem("basket", JSON.stringify(basket));
   }
 
   return (
@@ -27,7 +31,7 @@ export function Chek() {
               <p>{item.name}</p>
               <p>{item.count}x</p>
               <NumberFormat
-                value={item.price}
+                value={item.price * item.count}
                 displayType={"text"}
                 thousandSeparator={true}
                 prefix={"$"}
