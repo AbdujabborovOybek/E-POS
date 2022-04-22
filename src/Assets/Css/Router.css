@@ -49,7 +49,7 @@
   max-height: 3.5vw;
   min-height: 3.5vw;
   border-radius: 0 !important;
-  background: #e65130;
+  background: #f96c1d;
   color: #fff;
   font-size: 1.5vw;
   display: flex;
@@ -66,8 +66,5 @@
   overflow: auto;
   padding: 1vw 0.6vw 2vw;
   margin: 1vw 0;
-  background: url(../Images/uitc.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  background-color: #fff;
 }

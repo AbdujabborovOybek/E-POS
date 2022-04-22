@@ -40,7 +40,7 @@ export function Router() {
 
         <Button>
           {totalPrice <= 0 ? (
-            ":( "
+            "UITC IT CLUBS"
           ) : (
             <NumberFormat
               value={totalPrice}

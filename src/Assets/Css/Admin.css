@@ -6,6 +6,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
+  background-color: #fff;
   border-bottom: 1px solid #e0e0e09a;
 }
 

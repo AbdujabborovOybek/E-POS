@@ -1,13 +1,15 @@
 #chek-product {
   width: 100%;
   height: 2.5vw;
-  background: #2c9253;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   padding: 0 1vw;
   margin-top: 0.5vw;
+  background-color: #fff;
+  color: #171717;
+  border-bottom: 1px solid #7f7f7f4a;
 }
 
 #chek-product > div {
@@ -15,7 +17,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  color: #fff;
+  color: #171717;
 }
 
 #chek-product > div > p {
@@ -26,12 +28,18 @@
   font-size: 1vw;
 }
 
+#chek-product > div > i {
+  color: #171717;
+  font-size: 0.6vw;
+  margin-top: 0.2vw;
+  margin-left: 2vw;
+}
+
 #chek-product > div > button {
   min-width: 0 !important;
-  width: 3vw;
-  height: 2vw;
+  width: 2vw;
+  height: 1.6vw;
   margin-left: 0.2vw;
-  background-color: #fff;
   font-size: 2vw;
 }
 

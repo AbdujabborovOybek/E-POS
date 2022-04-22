@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import "../Assets/Css/Chek.css";
 import NumberFormat from "react-number-format";
+import { shadows } from "@mui/system";
 
 import { useSelector } from "react-redux";
 import { Button } from "@mui/material";
@@ -44,15 +45,28 @@ export function Chek() {
                 thousandSeparator={true}
                 prefix={"$"}
               />
+
+              <i>
+                {">"} {item.have - item.count}
+              </i>
             </div>
             <div>
-              <Button onClick={Delete.bind(this, item.id)}>
+              <Button
+                sx={{ boxShadow: 1 }}
+                onClick={Delete.bind(this, item.id)}
+              >
                 <DeleteIcon />
               </Button>
-              <Button onClick={Decrement.bind(this, item.id)}>
+              <Button
+                sx={{ boxShadow: 1 }}
+                onClick={Decrement.bind(this, item.id)}
+              >
                 <RemoveIcon />
               </Button>
-              <Button onClick={Increment.bind(this, item.id)}>
+              <Button
+                sx={{ boxShadow: 1 }}
+                onClick={Increment.bind(this, item.id)}
+              >
                 <AddIcon />
               </Button>
             </div>
