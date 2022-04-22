@@ -12,6 +12,7 @@ export const reBasket = (state = basket, action) => {
     case "INCREMET":
       return state.map((item) => {
         if (item.id === action.payload) {
+          localStorage.setItem("basket", JSON.stringify(state));
           return { ...item, count: item.count + 1 };
         } else {
           return item;

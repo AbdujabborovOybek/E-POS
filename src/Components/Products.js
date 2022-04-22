@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { Button } from "@mui/material";
 import "../Assets/Css/Products.css";
 import NumberFormat from "react-number-format";
@@ -9,11 +9,12 @@ import { useDispatch } from "react-redux";
 import { addToBasket, increment, totalPrice } from "../Redux/Actions/acBasket";
 
 export function Products() {
+  const [test, setTest] = useState([]);
   const basket = useSelector((state) => state.reBasket);
   const search = useSelector((state) => state.reSeach);
   const dispatch = useDispatch();
 
-  function AddToBasket(item) {
+function AddToBasket(item) {
     if (item.count === 0) {
       item.count = 1;
     }
@@ -33,8 +34,6 @@ export function Products() {
         dispatch(addToBasket(item));
       }
     }
-
-    console.log(basket);
 
     dispatch(totalPrice());
   }
