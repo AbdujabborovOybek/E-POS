@@ -3,11 +3,13 @@ import { createStore, combineReducers } from "redux";
 import { reSeach } from "./Reducer/reSeach";
 import { reBasket } from "./Reducer/reBasket";
 import { reLoading } from "./Reducer/reLoading";
+import { reLogin } from "./Reducer/reLogin";
 
 const reducer = combineReducers({
   reSeach,
   reBasket,
   reLoading,
+  reLogin,
 });
 
 export const store = createStore(

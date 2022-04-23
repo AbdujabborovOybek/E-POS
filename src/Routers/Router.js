@@ -42,8 +42,12 @@ export function Router() {
         dispatch(clearBasket());
         enqueueSnackbar("Xarid amalga oshirildi", { variant: "success" });
       }, 2000);
+    } else {
+      enqueueSnackbar("Xechnarsa tanlanmagan", { variant: "error" });
     }
   }
+
+  
 
   return (
     <div id="contener">
@@ -64,7 +68,7 @@ export function Router() {
           </Routes>
         </div>
 
-        <Button onClick={Buy} disabled={basket.length > 0 ? false : true}>
+        <Button onClick={Buy}>
           {totalPrice <= 0 ? (
             "UITC IT CLUBS"
           ) : (

@@ -7,7 +7,6 @@ import LineWeightIcon from "@mui/icons-material/LineWeight";
 import { NavLink } from "react-router-dom";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 
-
 export function Admin() {
   return (
     <div id="admin">
@@ -33,7 +32,12 @@ export function Admin() {
           <AccountCircleIcon fontSize="large" />
         </Button>
 
-        <Button>
+        <Button
+          onClick={() => {
+            window.location.href = "/";
+            delete localStorage.auth;
+          }}
+        >
           <LockIcon fontSize="large" />
         </Button>
       </div>

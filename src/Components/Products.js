@@ -10,7 +10,6 @@ import { addToBasket, increment } from "../Redux/Actions/acBasket";
 
 import { useNavigate, useLocation } from "react-router-dom";
 
-
 export function Products() {
   const location = useLocation();
   const basket = useSelector((state) => state.reBasket);
@@ -19,6 +18,7 @@ export function Products() {
   const navigate = useNavigate();
 
   function AddToBasket(item) {
+    console.log();
     if (location.pathname !== "/") {
       navigate("/");
     }
@@ -83,8 +83,6 @@ export function Products() {
           <p>Maxsulot topilmadi...</p>
         </div>
       )}
-
-      
     </>
   );
 }
