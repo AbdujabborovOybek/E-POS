@@ -8,6 +8,7 @@ import NumberFormat from "react-number-format";
 import { Chek } from "../Components/Chek";
 import { useSelector } from "react-redux";
 
+
 export function Router() {
   const [totalPrice, setTotalPrice] = useState(0);
   const basket = useSelector((state) => state.reBasket);

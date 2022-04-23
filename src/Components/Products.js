@@ -46,28 +46,34 @@ export function Products() {
 
   return (
     <>
-      {data.map((item, index) => {
-        return (
-          <div id="product" key={index} style={{ background: colors(index) }}>
-            <div id="product-info">
-              <p>{item.name}</p>
+      {data.length !== 0 ? (
+        data.map((item, index) => {
+          return (
+            <div id="product" key={index} style={{ background: colors(index) }}>
+              <div id="product-info">
+                <p>{item.name}</p>
 
-              <p>{fixAbout(item.about)}</p>
+                <p>{fixAbout(item.about)}</p>
+              </div>
+              <div id="product-count">
+                <NumberFormat
+                  value={item.price}
+                  displayType={"text"}
+                  thousandSeparator={true}
+                  prefix={"$"}
+                />
+                <Button onClick={AddToBasket.bind(this, item, item.id)}>
+                  <AddShoppingCartIcon />
+                </Button>
+              </div>
             </div>
-            <div id="product-count">
-              <NumberFormat
-                value={item.price}
-                displayType={"text"}
-                thousandSeparator={true}
-                prefix={"$"}
-              />
-              <Button onClick={AddToBasket.bind(this, item, item.id)}>
-                <AddShoppingCartIcon />
-              </Button>
-            </div>
-          </div>
-        );
-      })}
+          );
+        })
+      ) : (
+        <div id="err-serach">
+          <p>Maxsulot topilmadi...</p>
+        </div>
+      )}
     </>
   );
 }

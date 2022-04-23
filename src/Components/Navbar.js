@@ -1,8 +1,8 @@
 import "../Assets/Css/Navbar.css";
 import { Button } from "@mui/material";
-import ListIcon from "@mui/icons-material/List";
 import Input from "@mui/material/Input";
 import SearchIcon from "@mui/icons-material/Search";
+import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 
 import { useDispatch } from "react-redux";
 import { acSearch } from "../Redux/Actions/acSearch";
@@ -13,7 +13,7 @@ export function Navbar() {
     <nav id="nav">
       <div id="nav-menu">
         <Button>
-          <ListIcon fontSize="large" />
+          <FormatListBulletedIcon fontSize="large" />
         </Button>
         <p>UITC</p>
       </div>

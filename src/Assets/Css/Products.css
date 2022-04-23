@@ -90,3 +90,12 @@
     font-size: 1.5vw;
   }
 }
+
+#err-serach {
+  width: 100%;
+  height: 85vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2vw;
+}
