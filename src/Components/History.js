@@ -3,7 +3,7 @@ import "../Assets/Css/History.css";
 
 export function History() {
   return (
-    <div>
+    <div id="history">
       <h1>History</h1>
     </div>
   );

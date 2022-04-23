@@ -8,12 +8,21 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { addToBasket, increment } from "../Redux/Actions/acBasket";
 
+import { useNavigate, useLocation } from "react-router-dom";
+
+
 export function Products() {
+  const location = useLocation();
   const basket = useSelector((state) => state.reBasket);
   const search = useSelector((state) => state.reSeach);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   function AddToBasket(item) {
+    if (location.pathname !== "/") {
+      navigate("/");
+    }
+
     if (item.count === 0) {
       item.count = 1;
     }
@@ -74,6 +83,8 @@ export function Products() {
           <p>Maxsulot topilmadi...</p>
         </div>
       )}
+
+      
     </>
   );
 }

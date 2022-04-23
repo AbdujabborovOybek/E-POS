@@ -5,6 +5,7 @@ export const reBasket = (state = basket, action) => {
   switch (action.type) {
     case "ADD_TO_BASKET":
       return [...state, action.payload];
+
     case "INCREMET":
       return state.map((item) => {
         if (item.id === action.payload) {
@@ -13,6 +14,7 @@ export const reBasket = (state = basket, action) => {
           return item;
         }
       });
+
     case "DECREMENT":
       return state.map((item) => {
         if (item.id === action.payload) {
@@ -24,6 +26,9 @@ export const reBasket = (state = basket, action) => {
 
     case "DELETE_ITEM":
       return state.filter((item) => item.id !== action.payload);
+
+    case "CLEAR_BASKET":
+      return [];
 
     default:
       return state;

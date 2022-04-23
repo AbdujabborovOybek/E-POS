@@ -11,9 +11,14 @@ import { useSelector } from "react-redux";
 import { Chek } from "../Components/Chek";
 import { History } from "../Components/History";
 import { Message } from "../Components/Message";
+import { useDispatch } from "react-redux";
+import { acLoading } from "../Redux/Actions/acLoading";
+import { clearBasket } from "../Redux/Actions/acBasket";
+import { useSnackbar } from "notistack";
 
 export function Router() {
   const [totalPrice, setTotalPrice] = useState(0);
+  const dispatch = useDispatch();
   const basket = useSelector((state) => state.reBasket);
   useEffect(() => {
     let sum = 0;
@@ -26,6 +31,19 @@ export function Router() {
       setTotalPrice(0);
     }
   }, [basket]);
+
+  const { enqueueSnackbar } = useSnackbar();
+
+  function Buy() {
+    if (basket.length > 0) {
+      dispatch(acLoading(true));
+      setTimeout(() => {
+        dispatch(acLoading(false));
+        dispatch(clearBasket());
+        enqueueSnackbar("Xarid amalga oshirildi", { variant: "success" });
+      }, 2000);
+    }
+  }
 
   return (
     <div id="contener">
@@ -46,7 +64,7 @@ export function Router() {
           </Routes>
         </div>
 
-        <Button>
+        <Button onClick={Buy} disabled={basket.length > 0 ? false : true}>
           {totalPrice <= 0 ? (
             "UITC IT CLUBS"
           ) : (

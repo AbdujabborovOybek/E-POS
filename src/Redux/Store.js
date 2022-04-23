@@ -2,10 +2,12 @@ import { createStore, combineReducers } from "redux";
 
 import { reSeach } from "./Reducer/reSeach";
 import { reBasket } from "./Reducer/reBasket";
+import { reLoading } from "./Reducer/reLoading";
 
 const reducer = combineReducers({
   reSeach,
   reBasket,
+  reLoading,
 });
 
 export const store = createStore(
