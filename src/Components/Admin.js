@@ -2,22 +2,29 @@ import { Button } from "@mui/material";
 import "../Assets/Css/Admin.css";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LockIcon from "@mui/icons-material/Lock";
-import AutoGraphIcon from "@mui/icons-material/AutoGraph";
 import EmailIcon from "@mui/icons-material/Email";
 import LineWeightIcon from "@mui/icons-material/LineWeight";
+import { NavLink } from "react-router-dom";
+import AssignmentIcon from "@mui/icons-material/Assignment";
 
 export function Admin() {
   return (
     <div id="admin">
       <div>
         <Button>
-          <LineWeightIcon fontSize="large" />
+          <NavLink to="/">
+            <LineWeightIcon fontSize="large" />
+          </NavLink>
         </Button>
         <Button>
-          <AutoGraphIcon fontSize="large" />
+          <NavLink to="/history">
+            <AssignmentIcon fontSize="large" />
+          </NavLink>
         </Button>
         <Button>
-          <EmailIcon fontSize="large" />
+          <NavLink to="/message">
+            <EmailIcon fontSize="large" />
+          </NavLink>
         </Button>
       </div>
       <div>

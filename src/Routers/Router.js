@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { Route, Routes } from "react-router-dom";
 import "../Assets/Css/Router.css";
 import { Navbar } from "../Components/Navbar";
 import { Products } from "../Components/Products";
 import { Admin } from "../Components/Admin";
 import { Button } from "@mui/material";
 import NumberFormat from "react-number-format";
-import { Chek } from "../Components/Chek";
 import { useSelector } from "react-redux";
 
+import { Chek } from "../Components/Chek";
+import { History } from "../Components/History";
+import { Message } from "../Components/Message";
 
 export function Router() {
   const [totalPrice, setTotalPrice] = useState(0);
@@ -36,7 +39,11 @@ export function Router() {
         <Admin />
 
         <div id="basket-card">
-          <Chek />
+          <Routes>
+            <Route path="/" element={<Chek />} />
+            <Route path="/history" element={<History />} />
+            <Route path="/message" element={<Message />} />
+          </Routes>
         </div>
 
         <Button>
