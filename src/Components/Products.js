@@ -1,21 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "@mui/material";
 import "../Assets/Css/Products.css";
 import NumberFormat from "react-number-format";
-import { Data } from "../Data/Data";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { addToBasket, increment } from "../Redux/Actions/acBasket";
 
 import { useNavigate, useLocation } from "react-router-dom";
+import axios from "axios";
 
 export function Products() {
+  const [products, setProducts] = useState([]);
   const location = useLocation();
   const basket = useSelector((state) => state.reBasket);
   const search = useSelector((state) => state.reSeach);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const loading = useSelector((state) => state.reLoading);
+
+  useEffect(() => {
+    axios("http://localhost:5000/products")
+      .then((res) => {
+        setProducts(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [loading]);
 
   function AddToBasket(item) {
     console.log();
@@ -44,7 +56,7 @@ export function Products() {
     }
   }
 
-  const data = Data.filter((item) => {
+  const data = products.filter((item) => {
     return (
       item.name.toLowerCase().includes(search.toLowerCase()) ||
       item.code

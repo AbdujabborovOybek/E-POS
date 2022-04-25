@@ -51,6 +51,7 @@ export function Login() {
           <input
             type="text"
             placeholder="Login"
+            autoComplete="off"
             value={data.login}
             onChange={(e) => setData({ ...data, login: e.target.value })}
           />
@@ -61,6 +62,7 @@ export function Login() {
           <input
             type={eye ? "text" : "password"}
             placeholder="Password"
+            autoComplete="off"
             value={data.password}
             onChange={(e) => setData({ ...data, password: e.target.value })}
           />

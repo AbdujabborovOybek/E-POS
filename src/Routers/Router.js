@@ -15,6 +15,7 @@ import { useDispatch } from "react-redux";
 import { acLoading } from "../Redux/Actions/acLoading";
 import { clearBasket } from "../Redux/Actions/acBasket";
 import { useSnackbar } from "notistack";
+import axios from "axios";
 
 export function Router() {
   const [totalPrice, setTotalPrice] = useState(0);
@@ -37,17 +38,38 @@ export function Router() {
   function Buy() {
     if (basket.length > 0) {
       dispatch(acLoading(true));
-      setTimeout(() => {
-        dispatch(acLoading(false));
-        dispatch(clearBasket());
-        enqueueSnackbar("Xarid amalga oshirildi", { variant: "success" });
-      }, 2000);
+      axios("http://localhost:5000/products", {
+        method: "POST",
+        data: {
+          status: "shopping",
+          data: data,
+          time: time,
+          total_price: totalPrice,
+          kassir: "Oybek Abdujabborov",
+          basket: basket,
+        },
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => {
+          if (res.data.status) {
+            dispatch(acLoading(false));
+            dispatch(clearBasket());
+            enqueueSnackbar(res.data.msg, { variant: "success" });
+          } else {
+            dispatch(acLoading(false));
+            enqueueSnackbar(res.data.msg, { variant: "error" });
+          }
+        })
+        .catch((err) => {
+          dispatch(acLoading(false));
+          enqueueSnackbar(err, { variant: "error" });
+        });
     } else {
       enqueueSnackbar("Xechnarsa tanlanmagan", { variant: "error" });
     }
   }
-
-  
 
   return (
     <div id="contener">
@@ -84,3 +106,6 @@ export function Router() {
     </div>
   );
 }
+
+const data = new Date().toLocaleDateString();
+const time = new Date().toLocaleTimeString();

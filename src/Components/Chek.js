@@ -18,18 +18,6 @@ export function Chek() {
     localStorage.setItem("basket", JSON.stringify(basket));
   }, [basket]);
 
-  function Delete(id) {
-    dispatch(deleteItem(id));
-  }
-
-  function Decrement(id) {
-    dispatch(decrement(id));
-  }
-
-  function Increment(id) {
-    dispatch(increment(id));
-  }
-
   return (
     <>
       {basket.map((item, index) => {
@@ -46,25 +34,25 @@ export function Chek() {
               />
 
               <i>
-                {">"} {item.have - item.count}
+                {">"} {item.qoldi - item.count + " " + item.type}
               </i>
             </div>
             <div>
               <Button
                 sx={{ boxShadow: 1 }}
-                onClick={Delete.bind(this, item.id)}
+                onClick={() => dispatch(deleteItem(item.id))}
               >
                 <DeleteIcon />
               </Button>
               <Button
                 sx={{ boxShadow: 1 }}
-                onClick={Decrement.bind(this, item.id)}
+                onClick={() => dispatch(decrement(item.id))}
               >
                 <RemoveIcon />
               </Button>
               <Button
                 sx={{ boxShadow: 1 }}
-                onClick={Increment.bind(this, item.id)}
+                onClick={() => dispatch(increment(item.id))}
               >
                 <AddIcon />
               </Button>
