@@ -20,7 +20,7 @@ export function Products() {
   const loading = useSelector((state) => state.reLoading);
 
   useEffect(() => {
-    axios("http://localhost:5000/products")
+    axios("https://terminal-crm.herokuapp.com/products")
       .then((res) => {
         setProducts(res.data);
       })

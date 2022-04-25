@@ -38,7 +38,7 @@ export function Router() {
   function Buy() {
     if (basket.length > 0) {
       dispatch(acLoading(true));
-      axios("http://localhost:5000/products", {
+      axios("https://terminal-crm.herokuapp.com/products", {
         method: "POST",
         data: {
           status: "shopping",
