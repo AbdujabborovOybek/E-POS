@@ -20,7 +20,13 @@ export function Products() {
   const loading = useSelector((state) => state.reLoading);
 
   useEffect(() => {
-    axios("https://terminal-crm.herokuapp.com/products")
+    axios(`${process.env.REACT_APP_HOST}/products`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        key: process.env.REACT_APP_SECRET_KEY,
+      },
+    })
       .then((res) => {
         setProducts(res.data);
       })
