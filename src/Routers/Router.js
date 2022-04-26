@@ -38,7 +38,7 @@ export function Router() {
   function Buy() {
     if (basket.length > 0) {
       dispatch(acLoading(true));
-      axios("https://terminal-crm.herokuapp.com/products", {
+      axios(`${process.env.REACT_APP_HOST}/products`, {
         method: "POST",
         data: {
           status: "shopping",
@@ -50,6 +50,7 @@ export function Router() {
         },
         headers: {
           "Content-Type": "application/json",
+          key: process.env.REACT_APP_SECRET_KEY,
         },
       })
         .then((res) => {
