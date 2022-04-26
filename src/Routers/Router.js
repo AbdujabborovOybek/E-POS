@@ -42,8 +42,8 @@ export function Router() {
         method: "POST",
         data: {
           status: "shopping",
-          data: data,
-          time: time,
+          data: new Date().toLocaleDateString(),
+          time: new Date().toLocaleTimeString(),
           total_price: totalPrice,
           kassir: "Oybek Abdujabborov",
           basket: basket,
@@ -107,6 +107,3 @@ export function Router() {
     </div>
   );
 }
-
-const data = new Date().toLocaleDateString();
-const time = new Date().toLocaleTimeString();
