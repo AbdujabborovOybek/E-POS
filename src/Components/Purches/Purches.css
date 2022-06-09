@@ -1,0 +1,180 @@
+#purches {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+}
+
+#purches-header {
+  width: 100%;
+  height: 7%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2%;
+  background: #f6fbff;
+}
+
+#purches-header > p {
+  color: #171717;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+#purches-header > p > span {
+  padding-right: 6px;
+}
+
+#purches-header > button {
+  min-width: 0 !important;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+#purches-body {
+  width: 100%;
+  height: 75%;
+  padding: 2% 0;
+  overflow-y: auto;
+}
+
+#purches-body::-webkit-scrollbar {
+  width: 7px;
+  background: transparent;
+  border-radius: 5px;
+}
+
+#purches-body::-webkit-scrollbar-thumb {
+  background: #0e233b88;
+}
+
+#purches-item {
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid #e6e6e6;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 0 2%;
+}
+
+#purches-item:hover {
+  background-color: #f6fbff;
+}
+
+#purches-item > p {
+  font-size: 130%;
+}
+
+#purches-item > p > span {
+  padding-right: 6px;
+}
+
+#purches-report {
+  width: 100%;
+  height: 18%;
+  background: #f6fbff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#purches-report > p {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+}
+#purches-report > button {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #3595d5;
+  color: #ffffff;
+  font-size: 2.3rem;
+  border-radius: 0;
+}
+
+@media (max-width: 1600px) {
+  #purches-header > p {
+    font-size: 1.3rem;
+  }
+
+  #purches-header > button {
+    width: 45px;
+    height: 45px;
+  }
+
+  #purches-body {
+    height: 78%;
+  }
+
+  #purches-report {
+    height: 15%;
+  }
+
+  #purches-report > p {
+    font-size: 1.5rem;
+  }
+  #purches-report > button {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 1280px) {
+  #purches-header {
+    height: 9%;
+  }
+
+  #purches-header > p {
+    font-size: 1rem;
+  }
+
+  #purches-header > button {
+    width: 40px;
+    height: 40px;
+  }
+
+  #purches-header > button > svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  #purches-body {
+    height: 73%;
+  }
+
+  #purches-report {
+    height: 18%;
+  }
+
+  #purches-item > p {
+    font-size: 125%;
+  }
+
+  #purches-report > p {
+    font-size: 1.4rem;
+  }
+  #purches-report > button {
+    font-size: 1.7rem;
+  }
+
+  #purches-report > p {
+    height: 40%;
+  }
+  #purches-report > button {
+    height: 60%;
+  }
+}
