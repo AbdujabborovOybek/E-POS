@@ -2,6 +2,7 @@ import React from "react";
 import "./Assets/Css/App.css";
 import { Navbar } from "./Components/Navbar/Navbar";
 import { Purches } from "./Components/Purches/Purches";
+import { Product } from "./Components/Product/Product";
 
 export function App() {
   return (
@@ -11,8 +12,7 @@ export function App() {
       </div>
       <div id="content">
         <div id="content-left">
-          <div id="content-left-header"></div>
-          <div id="content-left-body"></div>
+          <Product />
         </div>
         <div id="content-right">
           <Purches />

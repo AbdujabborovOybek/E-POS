@@ -1,0 +1,109 @@
+#product {
+  max-width: 270px;
+  min-width: 270px;
+  max-height: 270px;
+  min-height: 270px;
+  background: #fcfcfc;
+  margin: 2.5px;
+  border-radius: 5px;
+  overflow: hidden;
+  padding: 2%;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#product > figure {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#product > figure > img {
+  width: 100%;
+}
+
+#porduct-info {
+  width: 100%;
+  height: 40%;
+  background-color: rgb(235, 235, 243);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4% 1%;
+}
+
+#porduct-info > :nth-child(1) {
+  font-size: 140%;
+}
+#porduct-info > :nth-child(2) {
+  font-size: 150%;
+  font-weight: bold;
+  color: blue;
+}
+
+#dialog-content {
+  width: 300px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5% 3%;
+}
+
+#dialog-content > p {
+  font-size: 145%;
+  padding-bottom: 10px;
+}
+
+#dialog-content > p > span {
+  font-size: 150%;
+  font-weight: bold;
+  color: blue;
+  padding: 0 5px;
+}
+
+#dialog-content > div {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#dialog-content > div > button {
+  width: 48%;
+  height: 45px;
+}
+#dialog-content > button {
+  width: 100%;
+  height: 45px;
+  margin-top: 15px;
+  font-size: 120%;
+}
+
+#close-modal {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 0 !important;
+}
+
+@media (max-width: 1600px) {
+  #product {
+    max-width: 200px;
+    min-width: 200px;
+    max-height: 200px;
+    min-height: 200px;
+  }
+}

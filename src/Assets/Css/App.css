@@ -24,7 +24,7 @@
 }
 
 #content-left {
-  width: 75vw;
+  width: 65vw;
   height: 93vh;
   display: flex;
   flex-direction: column;
@@ -33,8 +33,30 @@
   align-content: flex-start;
 }
 
+#content-left {
+  width: 100%;
+  height: 100%;
+  padding: 2%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  overflow-y: scroll;
+}
+
+#content-left::-webkit-scrollbar {
+  width: 7px;
+  background: transparent;
+  border-radius: 5px;
+}
+
+#content-left::-webkit-scrollbar-thumb {
+  background: #deed0b;
+}
+
 #content-right {
-  width: 25vw;
+  width: 35vw;
   height: 93vh;
 }
 
@@ -50,10 +72,16 @@
 
   #content-left {
     height: 90vh;
+    width: 75vw;
   }
 
   #content-right {
     height: 90vh;
+    width: 25vw;
+  }
+
+  #content-left {
+    height: 100%;
   }
 }
 
