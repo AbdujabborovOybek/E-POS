@@ -37,93 +37,101 @@ export function Purches() {
   return (
     <div id="purches">
       <div id="purches-header">
-        <p>
-          <span>{basket.length}</span>
-          <span>Maxsulot</span>
-        </p>
+        {basket.length !== 0 ? (
+          <p>
+            <span>{basket.length}</span>
+            <span>Maxsulot</span>
+          </p>
+        ) : (
+          <p>Xaridlar mavjud emas :)</p>
+        )}
         <Button>
           <FormatListBulletedIcon fontSize="medium" />
         </Button>
       </div>
       <div id="purches-body">
-        {basket.map((item, index) => {
-          return (
-            <div
-              id="purches-item"
-              key={item.id}
-              ref={el}
-              onClick={() => {
-                setOpen(index);
-                setCount(item.count);
-              }}
-            >
-              <p>
-                <span>{index + 1}</span>
-                <span>{item.name}</span>
-                <span>
-                  <i>x{item.count}</i>
-                </span>
-              </p>
-
-              <p>
-                <NumberFormat
-                  value={(item.price * item.count).toFixed(0)}
-                  displayType="text"
-                  thousandSeparator={true}
-                  renderText={(value) => <span>{value}s</span>}
-                />
-              </p>
-
+        {basket.length !== 0 ? (
+          basket.map((item, index) => {
+            return (
               <div
-                id="edite-purches-item"
-                style={open === index ? { display: "flex" } : {}}
+                id="purches-item"
+                key={item.id}
+                ref={el}
+                onClick={() => {
+                  setOpen(index);
+                  setCount(item.count);
+                }}
               >
-                <Button
-                  onClick={() => {
-                    setTimeout(() => {
-                      setOpen(false);
-                    }, 1);
-                  }}
+                <p>
+                  <span>{index + 1}</span>
+                  <span>{item.name}</span>
+                  <span>
+                    <i>x{item.count}</i>
+                  </span>
+                </p>
+
+                <p>
+                  <NumberFormat
+                    value={(item.price * item.count).toFixed(0)}
+                    displayType="text"
+                    thousandSeparator={true}
+                    renderText={(value) => <span>{value}s</span>}
+                  />
+                </p>
+
+                <div
+                  id="edite-purches-item"
+                  style={open === index ? { display: "flex" } : {}}
                 >
-                  <ClearIcon fontSize="medium" />
-                </Button>
-
-                <input
-                  type="text"
-                  value={count}
-                  onChange={(e) => {
-                    setCount(e.target.value === "0" ? 1 : e.target.value);
-                  }}
-                  autoFocus
-                />
-
-                <Button
-                  onClick={() => {
-                    if (count) {
-                      dispatch(updateBasket({ id: item.id, count: count }));
-                      setCount(false);
+                  <Button
+                    onClick={() => {
                       setTimeout(() => {
                         setOpen(false);
                       }, 1);
-                    }
-                  }}
-                >
-                  <CheckIcon fontSize="medium" />
-                </Button>
-                <Button
-                  onClick={() => {
-                    dispatch(removeBasket(item.id));
-                    setTimeout(() => {
-                      setOpen(false);
-                    }, 1);
-                  }}
-                >
-                  <DeleteIcon fontSize="medium" />
-                </Button>
+                    }}
+                  >
+                    <ClearIcon fontSize="medium" />
+                  </Button>
+
+                  <NumberFormat
+                    thousandSeparator={true}
+                    value={count}
+                    onChange={(e) => {
+                      setCount(e.target.value === "0" ? 1 : e.target.value);
+                    }}
+                    autoFocus
+                  />
+
+                  <Button
+                    onClick={() => {
+                      if (count) {
+                        dispatch(updateBasket({ id: item.id, count: count }));
+                        setCount(false);
+                        setTimeout(() => {
+                          setOpen(false);
+                        }, 1);
+                      }
+                    }}
+                  >
+                    <CheckIcon fontSize="medium" />
+                  </Button>
+                  <Button
+                    onClick={() => {
+                      dispatch(removeBasket(item.id));
+                      setTimeout(() => {
+                        setOpen(false);
+                      }, 1);
+                    }}
+                  >
+                    <DeleteIcon fontSize="medium" />
+                  </Button>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })
+        ) : (
+          <h2 id="blank-list"> Onlina Kassaga xush kelibsiz </h2>
+        )}
       </div>
       <div id="purches-report">
         <p>
@@ -134,7 +142,13 @@ export function Purches() {
             renderText={(value) => <span>{value} sum</span>}
           />
         </p>
-        <Button>Xarid</Button>
+        <Button
+          variant="contained"
+          color="primary"
+          disabled={basket.length !== 0 ? false : true}
+        >
+          Xarid
+        </Button>
       </div>
     </div>
   );

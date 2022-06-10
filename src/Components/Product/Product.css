@@ -82,11 +82,12 @@
   justify-content: center;
 }
 #change-count > input {
-  width: 40%;
+  width: 45%;
   padding: 1% 2%;
   font-size: 150%;
   border-radius: 4px;
   border: 2px solid #b8b2b2;
+  text-align: center;
 }
 
 #dialog-content > div {
@@ -114,6 +115,11 @@
   top: 0;
   right: 0;
   min-width: 0 !important;
+}
+
+#unsuccessful-search {
+  position: absolute;
+  color: #fff;
 }
 
 @media (max-width: 1600px) {

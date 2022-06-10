@@ -88,37 +88,46 @@ export function Product() {
   const [count, setCount] = useState(0);
   const dispatch = useDispatch();
   const basket = useSelector((state) => state.reBasket);
+  const search = useSelector((state) => state.reSearch);
 
-  console.log(product);
-
+  // savatni saqlash funktsiyasi
   useEffect(() => {
     localStorage.setItem("basket", JSON.stringify(basket));
   }, [basket]);
 
+  // search function
+  const result = Products.filter((product) => {
+    return product.name.toLowerCase().includes(search.toLowerCase());
+  });
+
   return (
     <>
-      {Products.map((item, index) => {
-        return (
-          <div
-            id="product"
-            key={item.id}
-            onClick={() => {
-              setOpen(true);
-              setProduct({ ...item, count: 1 });
-              setCount(1);
-            }}
-          >
-            <figure>
-              <img src={item.img} alt="" />
-            </figure>
+      {result.length !== 0 ? (
+        result.map((item, index) => {
+          return (
+            <div
+              id="product"
+              key={item.id}
+              onClick={() => {
+                setOpen(true);
+                setProduct({ ...item, count: 1 });
+                setCount(1);
+              }}
+            >
+              <figure>
+                <img src={item.img} alt="" />
+              </figure>
 
-            <div id="porduct-info">
-              <p>{item.name}</p>
-              <p>${item.price}</p>
+              <div id="porduct-info">
+                <p>{item.name}</p>
+                <p>${item.price}</p>
+              </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })
+      ) : (
+        <h1 id="unsuccessful-search">Maxsulot Topilmadi</h1>
+      )}
 
       <Dialog open={open}>
         <Button
