@@ -7,6 +7,7 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import CloseIcon from "@mui/icons-material/Close";
 import { useDispatch, useSelector } from "react-redux";
 import { addBasket } from "../../Reducer/Basket";
+import NumberFormat from "react-number-format";
 
 const Products = [
   {
@@ -88,9 +89,10 @@ export function Product() {
   const dispatch = useDispatch();
   const basket = useSelector((state) => state.reBasket);
 
+  console.log(product);
+
   useEffect(() => {
     localStorage.setItem("basket", JSON.stringify(basket));
-    
   }, [basket]);
 
   return (
@@ -102,8 +104,8 @@ export function Product() {
             key={item.id}
             onClick={() => {
               setOpen(true);
-              setProduct(item);
-              setCount(0);
+              setProduct({ ...item, count: 1 });
+              setCount(1);
             }}
           >
             <figure>
@@ -130,17 +132,34 @@ export function Product() {
         <div id="dialog-content">
           <p>{product.name}</p>
           <p>${product.price} x1</p>
-          <p>
-            <span>${+product.price * count}</span>
-            <span>x{count}</span>
-          </p>
+          <div id="change-count">
+            <span>
+              ${(parseFloat(product.price) * parseFloat(count)).toFixed(1)}
+            </span>
+            <NumberFormat
+              id="count"
+              thousandSeparator={true}
+              value={parseFloat(count)}
+              onValueChange={(e) => {
+                setCount(e.value === 0 || e.value === "" ? 1 : e.value);
+                setProduct({
+                  ...product,
+                  count: e.value === 0 || e.value === "" ? 1 : e.value,
+                });
+              }}
+            />
+          </div>
+
           <div>
             <Button
               variant="contained"
               color="error"
               onClick={() => {
-                setCount(count < 1 ? 0 : count - 1);
-                setProduct({ ...product, count: count < 1 ? 0 : count - 1 });
+                setCount(parseFloat(count) >= 0 ? 1 : parseFloat(count) - 1);
+                setProduct({
+                  ...product,
+                  count: parseFloat(count) >= 0 ? 1 : parseFloat(count) - 1,
+                });
               }}
             >
               <RemoveIcon fontSize="large" />
@@ -149,8 +168,11 @@ export function Product() {
               variant="contained"
               color="primary"
               onClick={() => {
-                setCount(count + 1);
-                setProduct({ ...product, count: count + 1 });
+                setCount(parseFloat(count ? count : 0) + 1);
+                setProduct({
+                  ...product,
+                  count: parseFloat(count ? count : 0) + 1,
+                });
               }}
             >
               <AddIcon />
@@ -161,11 +183,9 @@ export function Product() {
             variant="contained"
             color="primary"
             onClick={() => {
-              if (count !== 0) {
-                dispatch(addBasket(product));
-                setOpen(false);
-                setCount(0);
-              }
+              setCount(1);
+              dispatch(addBasket(product));
+              setOpen(false);
             }}
           >
             Ok
