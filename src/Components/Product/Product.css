@@ -42,7 +42,7 @@
 }
 
 #dialog-content {
-  width: 380px;
+  width: 440px;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -71,10 +71,11 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
+  padding-bottom: 15px;
 }
 
 #change-count > span {
-  width: 50%;
+  width: 48%;
   font-size: 150%;
   display: flex;
   flex-direction: row;
@@ -84,7 +85,7 @@
   border-radius: 4px;
 }
 #change-count > input {
-  width: 45%;
+  width: 48%;
   padding: 1% 2%;
   font-size: 150%;
   border-radius: 4px;
