@@ -1,0 +1,106 @@
+/* USER CARD */
+
+#JoneDoe {
+  width: 490px;
+  background: #ffffff;
+  padding: 30px 10px;
+  display: flex;
+  align-items: center;
+}
+
+#level {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 230px;
+  border-right: 1px solid #ccc;
+  width: 150px;
+}
+
+#level figure {
+  width: 120px;
+  height: 120px;
+  background-color: teal;
+  border-radius: 100px;
+}
+
+#level > button {
+  width: 90px;
+  padding: 5px;
+  border-radius: 40px;
+  border: none;
+  color: #fff;
+  background-color: rgb(50, 72, 72);
+  font-size: 16px;
+}
+
+#City {
+  width: 350px;
+  height: 230px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ism {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ism > b {
+  font-size: 220%;
+  color: rgb(50, 72, 72);
+  padding-bottom: 10px;
+}
+
+#name {
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#name1 > p {
+  font-size: 16px;
+  padding: 5px 0;
+  font-weight: 600;
+  color: rgb(50, 72, 72);
+}
+
+#name2 > p {
+  font-size: 16px;
+  padding: 5px 0;
+  font-weight: 600;
+  color: rgb(50, 72, 72);
+}
+
+#oyin {
+  width: 300px;
+  display: flex;
+  justify-content: space-around;
+  /* background-color: red; */
+}
+
+#logofuter {
+  width: 45px;
+  border-radius: 10%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#image {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background-color: gold;
+  margin: 5px 0;
+}
+
+#logofuter > p {
+  font-size: 16px;
+  font-weight: 600;
+  color: rgb(50, 72, 72);
+}

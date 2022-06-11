@@ -8,6 +8,9 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import ClearIcon from "@mui/icons-material/Clear";
 import CheckIcon from "@mui/icons-material/Check";
 import { removeBasket, updateBasket } from "../../Reducer/Basket";
+import { acLoading } from "../../Reducer/Loading";
+import { useSnackbar } from "notistack";
+import { clearBasket } from "../../Reducer/Basket";
 
 export function Purches() {
   const basket = useSelector((state) => state.reBasket);
@@ -15,6 +18,7 @@ export function Purches() {
   const [open, setOpen] = useState(false);
   const [count, setCount] = useState(0);
   const dispatch = useDispatch();
+  const { enqueueSnackbar } = useSnackbar();
 
   // functin for auto scrol to bottom
   const el = useRef(null);
@@ -37,17 +41,17 @@ export function Purches() {
   return (
     <div id="purches">
       <div id="purches-header">
+        <Button>
+          <FormatListBulletedIcon fontSize="medium" />
+        </Button>
         {basket.length !== 0 ? (
           <p>
             <span>{basket.length}</span>
             <span>Maxsulot</span>
           </p>
         ) : (
-          <p>Xaridlar mavjud emas :)</p>
+          <p>Xisobot Oynasi</p>
         )}
-        <Button>
-          <FormatListBulletedIcon fontSize="medium" />
-        </Button>
       </div>
       <div id="purches-body">
         {basket.length !== 0 ? (
@@ -127,7 +131,7 @@ export function Purches() {
                         dispatch(removeBasket(item.id));
                         setTimeout(() => {
                           setOpen(false);
-                        }, 1);
+                        }, 1000);
                       }}
                     >
                       <DeleteIcon fontSize="medium" />
@@ -154,6 +158,18 @@ export function Purches() {
           variant="contained"
           color="primary"
           disabled={basket.length !== 0 ? false : true}
+          onClick={() => {
+            dispatch(acLoading(true));
+
+            setTimeout(() => {
+              dispatch(acLoading(false));
+              enqueueSnackbar("Xarid amalga oshirildi", {
+                variant: "success",
+                autoHideDuration: 2000,
+              });
+              dispatch(clearBasket());
+            }, 1000);
+          }}
         >
           Xarid
         </Button>

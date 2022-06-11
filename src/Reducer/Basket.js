@@ -28,6 +28,9 @@ export const reBasket = (satate = basket, action) => {
         return item;
       });
 
+    case "CLEAR_BASKET":
+      return [];
+
     default:
       return satate;
   }
@@ -51,5 +54,11 @@ export const removeBasket = (id) => {
   return {
     type: "REMOVE_BASKET",
     payload: id,
+  };
+};
+
+export const clearBasket = () => {
+  return {
+    type: "CLEAR_BASKET",
   };
 };

@@ -1,12 +1,25 @@
 import React from "react";
 import { Button } from "@mui/material";
-
+import { useDispatch } from "react-redux";
+import { acLogin } from "../../Reducer/Authentication";
 import "./Login.css";
+import { acLoading } from "../../Reducer/Loading";
+import { useSnackbar } from "notistack";
 
-export function Login({ setIsLogin }) {
+export function Login() {
+  const dispatch = useDispatch();
+  const { enqueueSnackbar } = useSnackbar();
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIsLogin(true);
+    dispatch(acLogin(true));
+    dispatch(acLoading(true));
+    setTimeout(() => {
+      dispatch(acLoading(false));
+      enqueueSnackbar("Login Success", {
+        variant: "success",
+        autoHideDuration: 3000,
+      });
+    }, 1500);
   };
 
   return (

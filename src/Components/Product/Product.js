@@ -184,7 +184,6 @@ export function Product() {
                 setProduct({ ...item, count: 1 });
                 setCount(1);
               }}
-              // style={{ backgroundColor: RandomBgColor() }}
             >
               <p>{item.name}</p>
               <p>
@@ -197,7 +196,7 @@ export function Product() {
         <h1 id="unsuccessful-search">Maxsulot Topilmadi</h1>
       )}
 
-      <Dialog open={open}>
+      <Dialog open={open} id="dialog">
         <Button
           id="close-modal"
           onClick={() => {
@@ -216,7 +215,9 @@ export function Product() {
         >
           <div id="dialog-content">
             <p>{product.name}</p>
-            <p>${product.price} x1</p>
+            <p>
+              {product.price}sum 1{product.type}
+            </p>
             <div id="change-count">
               <span>
                 ${(parseFloat(product.price) * parseFloat(count)).toFixed(1)}
