@@ -11,10 +11,11 @@ export function Login() {
   const { enqueueSnackbar } = useSnackbar();
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(acLogin(true));
+
     dispatch(acLoading(true));
     setTimeout(() => {
       dispatch(acLoading(false));
+      dispatch(acLogin(true));
       enqueueSnackbar("Login Success", {
         variant: "success",
         autoHideDuration: 3000,

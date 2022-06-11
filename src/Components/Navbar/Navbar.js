@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./Navbar.css";
-import "./User.css";
 import { Button } from "@mui/material";
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
@@ -10,6 +9,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import { useDispatch } from "react-redux";
 import { acLogin } from "../../Reducer/Authentication";
 import { Notifications } from "../Notifications/Notifications";
+import { Kassir } from "../Kassir/Kassir";
 
 export function Navbar() {
   const dispatch = useDispatch();
@@ -68,7 +68,7 @@ export function Navbar() {
         </div>
       </Dialog>
 
-      <Dialog open={open}>
+      <Dialog open={open} id="kassir-modal">
         <Button
           id="close-modal"
           onClick={() => {
@@ -77,51 +77,8 @@ export function Navbar() {
         >
           <CloseIcon />
         </Button>
-        <div id="JoneDoe">
-          <div id="level">
-            <button>Tajribasi</button>
-            <figure></figure>
-            <button>12 Oy</button>
-          </div>
-          <div id="City">
-            <div className="rght">
-              <div className="ism">
-                <b>Jane Doe</b>
-              </div>
-              <div id="name">
-                <div id="name1">
-                  <p>Ish kunlari:</p>
-                  <p>Xamyon:</p>
-                </div>
-                <div id="name2">
-                  <p>23 kun</p>
-                  <p>2,260,000 sum</p>
-                </div>
-              </div>
-            </div>
-            <div id="oyin">
-              <div id="logofuter">
-                <p>Cofee</p>
-                <div id="image"></div>
-                <p>2</p>
-              </div>
-              <div id="logofuter">
-                <p>Cofee</p>
-                <div id="image"></div>
-                <p>2</p>
-              </div>
-              <div id="logofuter">
-                <p>Cofee</p>
-                <div id="image"></div>
-                <p>2</p>
-              </div>
-              <div id="logofuter">
-                <p>Cofee</p>
-                <div id="image"></div>
-                <p>2</p>
-              </div>
-            </div>
-          </div>
+        <div>
+          <Kassir />
         </div>
       </Dialog>
     </nav>

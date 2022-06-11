@@ -1,0 +1,76 @@
+#kassir {
+  width: 480px;
+  height: 240px;
+  padding: 5% 4%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+#kassir-left-card {
+  width: 40%;
+  height: 100% !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+#kassir-left-card > figure {
+  width: 100px;
+  height: 100px;
+  background-color: rgba(58, 58, 206, 0.461);
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+#kassir-left-card > figure > img {
+  width: 100%;
+}
+
+#kassir-left-card > p {
+  font-size: 130%;
+  background-color: #171717db;
+  color: #ffffff;
+  padding: 1% 4%;
+  border-radius: 3px;
+  margin-top: 10px;
+}
+
+#kassir-right-card {
+  width: 60%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+#kassir-right-card > div {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#kassir-right-card > div > p {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 135%;
+  padding: 3px 0;
+}
+#kassir-right-card > p {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 135%;
+}

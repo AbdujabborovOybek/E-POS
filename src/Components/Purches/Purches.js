@@ -11,6 +11,9 @@ import { removeBasket, updateBasket } from "../../Reducer/Basket";
 import { acLoading } from "../../Reducer/Loading";
 import { useSnackbar } from "notistack";
 import { clearBasket } from "../../Reducer/Basket";
+import { Dialog } from "@mui/material";
+import { SalesHistory } from "../SalesHistory/SalesHistory";
+import CloseIcon from "@mui/icons-material/Close";
 
 export function Purches() {
   const basket = useSelector((state) => state.reBasket);
@@ -19,6 +22,7 @@ export function Purches() {
   const [count, setCount] = useState(0);
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
+  const [salesHistory, setSalesHistory] = useState(false);
 
   // functin for auto scrol to bottom
   const el = useRef(null);
@@ -41,7 +45,11 @@ export function Purches() {
   return (
     <div id="purches">
       <div id="purches-header">
-        <Button>
+        <Button
+          onClick={() => {
+            setSalesHistory(true);
+          }}
+        >
           <FormatListBulletedIcon fontSize="medium" />
         </Button>
         {basket.length !== 0 ? (
@@ -174,6 +182,20 @@ export function Purches() {
           Xarid
         </Button>
       </div>
+
+      <Dialog open={salesHistory}>
+        <Button
+          id="close-modal"
+          onClick={() => {
+            setSalesHistory(false);
+          }}
+        >
+          <CloseIcon />
+        </Button>
+        <div>
+          <SalesHistory />
+        </div>
+      </Dialog>
     </div>
   );
 }
