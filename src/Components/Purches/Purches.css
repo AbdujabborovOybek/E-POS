@@ -143,14 +143,24 @@
   padding: 0 2%;
 }
 
-#edite-purches-item > button {
+#edite-purches-item > form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2%;
+}
+
+#edite-purches-item > form > button {
   min-width: 0 !important;
   width: 45px;
   color: #ffffff;
   font-weight: 600;
 }
 
-#edite-purches-item > input {
+#edite-purches-item > form > input {
   width: 110px;
   height: 40px;
   text-align: center;

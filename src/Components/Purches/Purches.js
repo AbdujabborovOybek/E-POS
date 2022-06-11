@@ -66,7 +66,10 @@ export function Purches() {
                   <span>{index + 1}</span>
                   <span>{item.name}</span>
                   <span>
-                    <i>x{item.count}</i>
+                    <i>
+                      {item.count}
+                      {item.type}
+                    </i>
                   </span>
                 </p>
 
@@ -83,48 +86,53 @@ export function Purches() {
                   id="edite-purches-item"
                   style={open === index ? { display: "flex" } : {}}
                 >
-                  <Button
-                    onClick={() => {
-                      setTimeout(() => {
-                        setOpen(false);
-                      }, 1);
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault();
                     }}
                   >
-                    <ClearIcon fontSize="medium" />
-                  </Button>
+                    <Button
+                      onClick={() => {
+                        setTimeout(() => {
+                          setOpen(false);
+                        }, 1);
+                      }}
+                    >
+                      <ClearIcon fontSize="medium" />
+                    </Button>
 
-                  <NumberFormat
-                    thousandSeparator={true}
-                    value={count}
-                    onChange={(e) => {
-                      setCount(e.target.value === "0" ? 1 : e.target.value);
-                    }}
-                    autoFocus
-                  />
+                    <NumberFormat
+                      thousandSeparator={true}
+                      value={count}
+                      onChange={(e) => {
+                        setCount(e.target.value === "0" ? 1 : e.target.value);
+                      }}
+                      autoFocus
+                    />
 
-                  <Button
-                    onClick={() => {
-                      if (count) {
+                    <Button
+                      type="submit"
+                      onClick={() => {
                         dispatch(updateBasket({ id: item.id, count: count }));
                         setCount(false);
                         setTimeout(() => {
                           setOpen(false);
+                        }, 11);
+                      }}
+                    >
+                      <CheckIcon fontSize="medium" />
+                    </Button>
+                    <Button
+                      onClick={() => {
+                        dispatch(removeBasket(item.id));
+                        setTimeout(() => {
+                          setOpen(false);
                         }, 1);
-                      }
-                    }}
-                  >
-                    <CheckIcon fontSize="medium" />
-                  </Button>
-                  <Button
-                    onClick={() => {
-                      dispatch(removeBasket(item.id));
-                      setTimeout(() => {
-                        setOpen(false);
-                      }, 1);
-                    }}
-                  >
-                    <DeleteIcon fontSize="medium" />
-                  </Button>
+                      }}
+                    >
+                      <DeleteIcon fontSize="medium" />
+                    </Button>
+                  </form>
                 </div>
               </div>
             );

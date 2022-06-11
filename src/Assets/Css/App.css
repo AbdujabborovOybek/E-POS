@@ -21,6 +21,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  background-color: rgba(6, 26, 24, 0.808);
 }
 
 #content-left {
@@ -35,7 +36,7 @@
 
 #content-left {
   width: 100%;
-  height: 100%;
+  height: 90vh;
   padding: 2%;
   display: flex;
   flex-direction: row;
@@ -52,7 +53,7 @@
 }
 
 #content-left::-webkit-scrollbar-thumb {
-  background: #deed0b;
+  background: #e3d7d4;
 }
 
 #content-right {
@@ -71,7 +72,7 @@
   }
 
   #content-left {
-    height: 90vh;
+    height: 87vh;
     width: 75vw;
   }
 
@@ -96,7 +97,7 @@
 
   #content-left {
     width: 70vw;
-    height: 91vh;
+    height: 88vh;
   }
 
   #content-right {

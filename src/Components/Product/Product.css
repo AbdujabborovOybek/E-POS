@@ -3,7 +3,7 @@
   min-width: 270px;
   max-height: 190px;
   min-height: 190px;
-  background: #fcfcfc;
+  background: #ffffffe1;
   margin: 2.5px;
   border-radius: 5px;
   overflow: hidden;
@@ -14,6 +14,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  border: 1px solid #1225f31a;
 }
 
 #product > :nth-child(1) {
@@ -23,10 +24,17 @@
   line-height: 130%;
   font-weight: 600;
 }
+
 #product > :nth-child(2) {
   font-size: 150%;
   font-weight: bold;
   color: #2148c0;
+}
+
+#product > :nth-child(2) > span {
+  font-family: cursive;
+  padding-left: 1px;
+  font-size: 60% !important;
 }
 
 #dialog-content {
