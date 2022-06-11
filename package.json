@@ -1,5 +1,6 @@
 {
-  "name": "terminal-user-crm",
+  "name": "pos-kassa",
+  "author": "Oybek Abdujabborov",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
