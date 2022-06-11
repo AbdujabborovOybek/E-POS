@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Assets/Css/App.css";
 import { Navbar } from "./Components/Navbar/Navbar";
 import { Purches } from "./Components/Purches/Purches";
 import { Product } from "./Components/Product/Product";
+import { Login } from "./Components/Login/Login";
 
 export function App() {
-  return (
+  const [isLogin, setIsLogin] = useState(false);
+
+  return isLogin ? (
     <div id="main-window">
       <div id="header">
         <Navbar />
@@ -19,5 +22,7 @@ export function App() {
         </div>
       </div>
     </div>
+  ) : (
+    <Login setIsLogin={setIsLogin} />
   );
 }

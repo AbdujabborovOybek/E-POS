@@ -12,73 +12,124 @@ import NumberFormat from "react-number-format";
 const Products = [
   {
     id: 1,
-    name: "Product 1",
-    price: "100",
+    name: "Plombir",
+    price: "6000",
     count: 0,
-    img: "https://micro-cook.ru/images/stories/recipes/Desserts.jpg",
   },
   {
     id: 2,
-    name: "Product 2",
-    price: "200",
+    name: "Alpen Gold Max Fun",
+    price: "7000",
     count: 0,
-    img: "https://micro-cook.ru/images/stories/recipes/Desserts.jpg",
   },
   {
     id: 3,
-    name: "Product 3",
-    price: "300",
+    name: "Pepsi",
+    price: "1000",
     count: 0,
-    img: "https://micro-cook.ru/images/stories/recipes/Desserts.jpg",
   },
   {
     id: 4,
-    name: "Product 4",
-    price: "400",
+    name: "CocoCola",
+    price: "8000",
     count: 0,
-    img: "https://micro-cook.ru/images/stories/recipes/Desserts.jpg",
   },
   {
     id: 5,
-    name: "Product 5",
-    price: "500",
+    name: "Limon",
+    price: "5000",
     count: 0,
-    img: "https://micro-cook.ru/images/stories/recipes/Desserts.jpg",
   },
   {
     id: 6,
-    name: "Product 6",
-    price: "600",
+    name: "Banan",
+    price: "27000",
     count: 0,
-    img: "https://micro-cook.ru/images/stories/recipes/Desserts.jpg",
   },
   {
     id: 7,
-    name: "Product 7",
-    price: "700",
+    name: "Shakar",
+    price: "19000",
     count: 0,
-    img: "https://micro-cook.ru/images/stories/recipes/Desserts.jpg",
   },
   {
     id: 8,
-    name: "Product 8",
-    price: "800",
+    name: "Xurmo",
+    price: "23000",
     count: 0,
-    img: "https://micro-cook.ru/images/stories/recipes/Desserts.jpg",
   },
   {
     id: 9,
     name: "Product 9",
     price: "900",
     count: 0,
-    img: "https://micro-cook.ru/images/stories/recipes/Desserts.jpg",
   },
   {
     id: 10,
-    name: "Product 10",
-    price: "1000",
+    name: "Nok",
+    price: "32000",
     count: 0,
-    img: "https://micro-cook.ru/images/stories/recipes/Desserts.jpg",
+  },
+
+  {
+    id: 11,
+    name: "Shaftoli",
+    price: "30000",
+    count: 0,
+  },
+  {
+    id: 12,
+    name: "Olma",
+    price: "13000",
+    count: 0,
+  },
+  {
+    id: 13,
+    name: "Gilos",
+    price: "31000",
+    count: 0,
+  },
+  {
+    id: 14,
+    name: "Anjir",
+    price: "1200",
+    count: 0,
+  },
+  {
+    id: 15,
+    name: "Qizil Uzum",
+    price: "16000",
+    count: 0,
+  },
+  {
+    id: 16,
+    name: "Anor",
+    price: "21000",
+    count: 0,
+  },
+  {
+    id: 17,
+    name: "Anor",
+    price: "21000",
+    count: 0,
+  },
+  {
+    id: 18,
+    name: "Tarvuz ",
+    price: "3000",
+    count: 0,
+  },
+  {
+    id: 19,
+    name: "Qovun",
+    price: "5000",
+    count: 0,
+  },
+  {
+    id: 20,
+    name: "Anjir Shaftoli",
+    price: "13000",
+    count: 0,
   },
 ];
 
@@ -114,14 +165,8 @@ export function Product() {
                 setCount(1);
               }}
             >
-              <figure>
-                <img src={item.img} alt="" />
-              </figure>
-
-              <div id="porduct-info">
-                <p>{item.name}</p>
-                <p>${item.price}</p>
-              </div>
+              <p>{item.name}</p>
+              <p>{item.price}uzs</p>
             </div>
           );
         })
@@ -138,68 +183,69 @@ export function Product() {
         >
           <CloseIcon />
         </Button>
-        <div id="dialog-content">
-          <p>{product.name}</p>
-          <p>${product.price} x1</p>
-          <div id="change-count">
-            <span>
-              ${(parseFloat(product.price) * parseFloat(count)).toFixed(1)}
-            </span>
-            <NumberFormat
-              id="count"
-              thousandSeparator={true}
-              value={parseFloat(count)}
-              onValueChange={(e) => {
-                setCount(e.value === 0 || e.value === "" ? 1 : e.value);
-                setProduct({
-                  ...product,
-                  count: e.value === 0 || e.value === "" ? 1 : e.value,
-                });
-              }}
-            />
-          </div>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            setCount(1);
+            dispatch(addBasket(product));
+            setOpen(false);
+          }}
+        >
+          <div id="dialog-content">
+            <p>{product.name}</p>
+            <p>${product.price} x1</p>
+            <div id="change-count">
+              <span>
+                ${(parseFloat(product.price) * parseFloat(count)).toFixed(1)}
+              </span>
+              <NumberFormat
+                id="count"
+                thousandSeparator={true}
+                value={parseFloat(count)}
+                onValueChange={(e) => {
+                  setCount(e.value === 0 || e.value === "" ? 1 : e.value);
+                  setProduct({
+                    ...product,
+                    count: e.value === 0 || e.value === "" ? 1 : e.value,
+                  });
+                }}
+              />
+            </div>
 
-          <div>
-            <Button
-              variant="contained"
-              color="error"
-              onClick={() => {
-                setCount(parseFloat(count) >= 0 ? 1 : parseFloat(count) - 1);
-                setProduct({
-                  ...product,
-                  count: parseFloat(count) >= 0 ? 1 : parseFloat(count) - 1,
-                });
-              }}
-            >
-              <RemoveIcon fontSize="large" />
-            </Button>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={() => {
-                setCount(parseFloat(count ? count : 0) + 1);
-                setProduct({
-                  ...product,
-                  count: parseFloat(count ? count : 0) + 1,
-                });
-              }}
-            >
-              <AddIcon />
+            <div>
+              <Button
+                variant="contained"
+                color="error"
+                onClick={() => {
+                  setCount(parseFloat(count) >= 0 ? 1 : parseFloat(count) - 1);
+                  setProduct({
+                    ...product,
+                    count: parseFloat(count) >= 0 ? 1 : parseFloat(count) - 1,
+                  });
+                }}
+              >
+                <RemoveIcon fontSize="large" />
+              </Button>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => {
+                  setCount(parseFloat(count ? count : 0) + 1);
+                  setProduct({
+                    ...product,
+                    count: parseFloat(count ? count : 0) + 1,
+                  });
+                }}
+              >
+                <AddIcon />
+              </Button>
+            </div>
+
+            <Button type="submit" variant="contained" color="primary">
+              Ok
             </Button>
           </div>
-
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={() => {
-              setCount(1);
-              dispatch(addBasket(product));
-              setOpen(false);
-            }}
-          >
-            Ok
-          </Button>
-        </div>
+        </form>
       </Dialog>
     </>
   );
