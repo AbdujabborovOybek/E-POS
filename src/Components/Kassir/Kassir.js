@@ -8,8 +8,8 @@ export function Kassir() {
         <figure>
           <img src="" alt="" />
         </figure>
-        <p>Kassir:</p>
-        <p>4oy:</p>
+        <p>Ish tajribasi</p>
+        <p>4oy</p>
       </div>
       <div id="kassir-right-card">
         <h1>Oybek Abdujabborov</h1>
