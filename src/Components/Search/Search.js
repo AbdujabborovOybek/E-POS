@@ -21,9 +21,6 @@ export function Search() {
           name="search"
           placeholder="Search"
           autoComplete="off"
-          onChange={(e) => {
-            dispatch(acSearch(e.target.value));
-          }}
         />
         <button>
           <SearchIcon />
