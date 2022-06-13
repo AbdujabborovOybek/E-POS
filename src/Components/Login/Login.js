@@ -13,7 +13,7 @@ export function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(acLoading(true));
-    axios("http://e-pos.my-api.uz/authentication", {
+    axios("https://e-pos.my-api.uz/authentication", {
       method: "POST",
       data: {
         login: e.target.login.value,
