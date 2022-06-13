@@ -5,22 +5,39 @@ import { acLogin } from "../../Reducer/Authentication";
 import "./Login.css";
 import { acLoading } from "../../Reducer/Loading";
 import { useSnackbar } from "notistack";
+import axios from "axios";
 
 export function Login() {
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
   const handleSubmit = (e) => {
     e.preventDefault();
-
     dispatch(acLoading(true));
-    setTimeout(() => {
-      dispatch(acLoading(false));
-      dispatch(acLogin(true));
-      enqueueSnackbar("Login Success", {
-        variant: "success",
-        autoHideDuration: 3000,
+    axios("http://e-pos.my-api.uz/authentication", {
+      method: "POST",
+      data: {
+        login: e.target.login.value,
+        password: e.target.password.value,
+      },
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => {
+        if (res.data.status) {
+          dispatch(acLoading(false));
+          dispatch(acLogin(true));
+          enqueueSnackbar(res.data.message, { variant: "success" });
+        } else {
+          dispatch(acLogin(false));
+          dispatch(acLoading(false));
+          enqueueSnackbar(res.data.message, { variant: "error" });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
       });
-    }, 1500);
   };
 
   return (
@@ -54,9 +71,18 @@ export function Login() {
             strokeWidth="3.00518"
           />
         </svg>
-
-        <input type="text" name="login" placeholder="Login" />
-        <input type="password" name="password" placeholder="Password" />
+        <input
+          type="text"
+          name="login"
+          placeholder="Login"
+          autoComplete="off"
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          autoComplete="off"
+        />
         <Button type="submit">LOGIN</Button>
       </form>
     </div>

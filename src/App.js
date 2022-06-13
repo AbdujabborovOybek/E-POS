@@ -11,9 +11,6 @@ import CircularProgress from "@mui/material/CircularProgress";
 export function App() {
   const isLogin = useSelector((state) => state.reLogin);
   const isLoading = useSelector((state) => state.reLoading);
-
-  console.log(isLoading);
-
   return (
     <>
       {isLogin ? (
