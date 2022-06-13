@@ -20,9 +20,10 @@
 #kassir-left-card > figure {
   width: 100px;
   height: 100px;
-  background-color: rgba(58, 58, 206, 0.461);
+  background-color: rgba(201, 201, 207, 0.461);
   border-radius: 50%;
   overflow: hidden;
+  border: 1px solid #17171705;
 }
 
 #kassir-left-card > figure > img {

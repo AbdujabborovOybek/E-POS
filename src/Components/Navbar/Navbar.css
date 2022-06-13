@@ -35,6 +35,11 @@ nav::after {
   border-radius: 50%;
   color: #171717;
   font-size: 130%;
+  overflow: hidden;
+}
+
+#cashier-reference > button > img {
+  width: 150%;
 }
 
 #cashier-reference > p {

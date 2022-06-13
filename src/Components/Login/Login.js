@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "@mui/material";
 import { useDispatch } from "react-redux";
-import { acLogin } from "../../Reducer/Authentication";
+import { acLogin, acUser } from "../../Reducer/Authentication";
 import "./Login.css";
 import { acLoading } from "../../Reducer/Loading";
 import { useSnackbar } from "notistack";
@@ -29,6 +29,7 @@ export function Login() {
           dispatch(acLoading(false));
           dispatch(acLogin(true));
           enqueueSnackbar(res.data.message, { variant: "success" });
+          dispatch(acUser(res.data.user));
         } else {
           dispatch(acLogin(false));
           dispatch(acLoading(false));

@@ -1,22 +1,30 @@
 import React from "react";
 import "./Kassir.css";
+import { useSelector } from "react-redux";
+import NumberFormat from "react-number-format";
 
 export function Kassir() {
+  const user = useSelector((state) => state.reUser);
+
   return (
     <div id="kassir">
       <div id="kassir-left-card">
         <figure>
-          <img src="" alt="" />
+          <img src={user.img} alt="" />
         </figure>
         <p>Ish tajribasi</p>
         <p>4oy</p>
       </div>
       <div id="kassir-right-card">
-        <h1>Oybek Abdujabborov</h1>
+        <h1>{user.name}</h1>
         <div>
           <p>
             <span>Xisob:</span>
-            <span>3 500 00 sum</span>
+            <NumberFormat
+              value={user.fund}
+              displayType="text"
+              thousandSeparator={true}
+            />
           </p>
 
           <p>
@@ -25,7 +33,7 @@ export function Kassir() {
           </p>
         </div>
 
-        <p>Tel: +99 895 027 0496</p>
+        <p>{user.tel}</p>
       </div>
     </div>
   );

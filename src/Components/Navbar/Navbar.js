@@ -6,7 +6,7 @@ import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import { Search } from "../Search/Search";
 import { Dialog } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { acLogin } from "../../Reducer/Authentication";
 import { Notifications } from "../Notifications/Notifications";
 import { Kassir } from "../Kassir/Kassir";
@@ -15,6 +15,7 @@ export function Navbar() {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const [openNotifications, setOpenNotifications] = useState(false);
+  const user = useSelector((state) => state.reUser);
 
   return (
     <nav>
@@ -24,11 +25,11 @@ export function Navbar() {
             setOpen(true);
           }}
         >
-          AO
+          <img src={user.img} alt="" />
         </Button>
         <p>
-          <span>Kassir</span>
-          <span>Oybek Abdujabborov</span>
+          <span>{user.role}</span>
+          <span>{user.name}</span>
         </p>
       </div>
 
