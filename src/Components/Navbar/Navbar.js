@@ -49,6 +49,7 @@ export function Navbar() {
           onClick={() => {
             dispatch(acLogin(false));
             window.location.reload();
+            sessionStorage.removeItem("auth");
           }}
         >
           <PowerSettingsNewIcon fontSize="large" />

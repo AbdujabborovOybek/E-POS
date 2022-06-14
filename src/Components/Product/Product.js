@@ -62,7 +62,7 @@ export function Product() {
             >
               <p>{item.name}</p>
               <p>
-                {item.price}uzs <span>1{item.type}</span>
+                {item.price}s <span>1{item.type}</span>
               </p>
             </div>
           );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { acLogin, acUser } from "../../Reducer/Authentication";
@@ -10,6 +10,30 @@ import axios from "axios";
 export function Login() {
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
+
+  useEffect(() => {
+    const auth = JSON.parse(sessionStorage.getItem("auth"));
+    axios("https://e-pos.my-api.uz/authentication", {
+      method: "POST",
+      data: { ...auth },
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => {
+        if (res.data.status) {
+          dispatch(acLogin(true));
+          dispatch(acUser(res.data.user));
+        } else {
+          dispatch(acLogin(false));
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [dispatch]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(acLoading(true));
@@ -30,14 +54,27 @@ export function Login() {
           dispatch(acLogin(true));
           enqueueSnackbar(res.data.message, { variant: "success" });
           dispatch(acUser(res.data.user));
+
+          sessionStorage.setItem(
+            "auth",
+            JSON.stringify({
+              login: e.target.login.value,
+              password: e.target.password.value,
+            })
+          );
         } else {
           dispatch(acLogin(false));
           dispatch(acLoading(false));
           enqueueSnackbar(res.data.message, { variant: "error" });
         }
+
+        e.target.login.value = "";
+        e.target.password.value = "";
       })
       .catch((err) => {
         console.log(err);
+        e.target.login.value = "";
+        e.target.password.value = "";
       });
   };
 
