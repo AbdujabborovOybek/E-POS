@@ -1,8 +1,24 @@
 #salesHistory {
-  width: 490px;
+  width: 25vw;
   height: auto;
-  max-height: 600px;
-  padding: 5%;
+  max-height: 70vh;
+  overflow-y: scroll;
+}
+
+@media (max-width: 1290px) {
+  #salesHistory {
+    width: 33vw;
+    height: 90vh;
+  }
+}
+
+#salesHistory::-webkit-scrollbar {
+  width: 0.3vw;
+  background: transparent;
+}
+
+#salesHistory::-webkit-scrollbar-thumb {
+  background: #0e233b88;
 }
 
 #sales-product {
@@ -10,7 +26,18 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  margin-bottom: 30px;
+  margin-bottom: 0.1vw;
+  background-color: rgba(152, 177, 177, 0.082);
+  padding: 5%;
+}
+
+#sales-product > h2 {
+  color: #4d9ee9;
+  text-align: center;
+}
+#sales-product > h3 {
+  color: red;
+  text-align: center;
 }
 
 #sales-product > div {
@@ -20,9 +47,17 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  background-color: rgba(0, 255, 255, 0.064);
+}
+
+#sales-product > div > p {
+  background-color: #4d9ee917;
+  margin-bottom: 0.1vw;
 }
 
 #sales-product > div > p > span {
   padding-right: 10px;
+}
+
+#product-price {
+  color: #4d9ee9 !important;
 }

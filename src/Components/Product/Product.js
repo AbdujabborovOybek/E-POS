@@ -84,6 +84,7 @@ export function Product() {
           onSubmit={(e) => {
             e.preventDefault();
             setCount(1);
+            delete product.amount;
             dispatch(addBasket(product));
             setOpen(false);
           }}
@@ -95,7 +96,7 @@ export function Product() {
             </p>
             <div id="change-count">
               <span>
-                ${(parseFloat(product.price) * parseFloat(count)).toFixed(1)}
+                {(parseFloat(product.price) * parseFloat(count)).toFixed(1)}
               </span>
               <NumberFormat
                 autoComplete="off"

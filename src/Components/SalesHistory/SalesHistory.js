@@ -1,55 +1,82 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./SalesHistory.css";
-import { Button } from "@mui/material";
-import RefreshIcon from "@mui/icons-material/Refresh";
+// import { Button } from "@mui/material";
+// import RefreshIcon from "@mui/icons-material/Refresh";
+import axios from "axios";
+import NumberFormat from "react-number-format";
+import { useSelector } from "react-redux";
 
 export function SalesHistory() {
+  const [history, setHistory] = useState([]);
+  const user = useSelector((state) => state.reUser);
+
+  useEffect(() => {
+    axios("https://e-pos.my-api.uz/view_purchase_history", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        Authorization: 123456789,
+      },
+    })
+      .then((res) => {
+        setHistory(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <div id="salesHistory">
-      <div id="sales-product">
-        <p>12.06.2022 01:02</p>
-        <div>
-          <p>
-            <span>1 Bexi 1kg</span>
-            <span>34000sum</span>
-          </p>
-          <Button>
-            <RefreshIcon />
-          </Button>
-        </div>
-        <div>
-          <p>
-            <span>2 Bexi 1kg</span>
-            <span>34000sum</span>
-          </p>
-          <Button>
-            <RefreshIcon />
-          </Button>
-        </div>
-        <div>
-          <p>
-            <span>3 Bexi 1kg</span>
-            <span>34000sum</span>
-          </p>
-          <Button>
-            <RefreshIcon />
-          </Button>
-        </div>
-        <div>
-          <p>
-            <span>4 Bexi 1kg</span>
-            <span>34000sum</span>
-          </p>
-          <Button>
-            <RefreshIcon />
-          </Button>
-        </div>
+      {history.map((item, index) => {
+        if (item.user_id === user.id) {
+          return (
+            <div id="sales-product" key={item.id}>
+              <h2>
+                {item.date} {item.time}
+              </h2>
+              {Product(item.shopping)}
+              <h3>
+                <span>Xisob: </span>
+                <NumberFormat
+                  value={item.price}
+                  displayType={"text"}
+                  thousandSeparator={true}
+                  renderText={(value) => <span>{value} so`m</span>}
+                />
+              </h3>
+            </div>
+          );
+        }
 
-        <h3>
-          <span>Xisob:</span>
-          <span>136000sum</span>
-        </h3>
-      </div>
+        return null;
+      })}
     </div>
   );
+}
+
+function Product(arrData) {
+  return arrData.map((item, index) => {
+    return (
+      <div key={item.id} id="pr_list">
+        <p>
+          <span>{index + 1}</span>
+          <span>{item.name}</span>
+          <span>
+            {item.count} {item.type}
+          </span>
+          <NumberFormat
+            value={item.price}
+            displayType={"text"}
+            thousandSeparator={true}
+            renderText={(value) => <span id="product-price">{value}sum</span>}
+          />
+        </p>
+        {/* <Button>
+          <RefreshIcon />
+        </Button> */}
+      </div>
+    );
+  });
 }

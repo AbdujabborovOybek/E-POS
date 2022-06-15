@@ -14,6 +14,7 @@ import { clearBasket } from "../../Reducer/Basket";
 import { Dialog } from "@mui/material";
 import { SalesHistory } from "../SalesHistory/SalesHistory";
 import CloseIcon from "@mui/icons-material/Close";
+import axios from "axios";
 
 export function Purches() {
   const basket = useSelector((state) => state.reBasket);
@@ -23,6 +24,7 @@ export function Purches() {
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
   const [salesHistory, setSalesHistory] = useState(false);
+  const user = useSelector((state) => state.reUser);
 
   // functin for auto scrol to bottom
   const el = useRef(null);
@@ -169,14 +171,38 @@ export function Purches() {
           onClick={() => {
             dispatch(acLoading(true));
 
-            setTimeout(() => {
-              dispatch(acLoading(false));
-              enqueueSnackbar("Xarid amalga oshirildi", {
-                variant: "success",
-                autoHideDuration: 2000,
+            axios("https://e-pos.my-api.uz/purchase_history", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+                Authorization: 123456789,
+              },
+              data: {
+                employee: user.name,
+                user_id: user.id,
+                shopping: JSON.stringify(basket),
+                price: totalPrice,
+                date: new Date().toLocaleDateString("en-GB"),
+                time: new Date().toLocaleTimeString("en-GB"),
+              },
+              timeout: 10000,
+            })
+              .then((res) => {
+                dispatch(acLoading(false));
+                enqueueSnackbar(res.data.message, {
+                  variant: "success",
+                  autoHideDuration: 2000,
+                });
+                dispatch(clearBasket());
+              })
+              .catch((err) => {
+                dispatch(acLoading(false));
+                enqueueSnackbar(err.response.data.message, {
+                  variant: "error",
+                  autoHideDuration: 2000,
+                });
               });
-              dispatch(clearBasket());
-            }, 1000);
           }}
         >
           Xarid
