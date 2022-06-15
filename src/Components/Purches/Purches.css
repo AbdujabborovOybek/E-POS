@@ -20,7 +20,7 @@
 }
 
 #purches-header > p {
-  color: #171717;
+  color: #2780bc;
   font-size: 1.6rem;
   font-weight: bold;
 }
@@ -111,6 +111,7 @@
   justify-content: center;
   align-items: center;
   font-size: 2rem;
+   color: #2780bc;
 }
 #purches-report > button {
   width: 100%;

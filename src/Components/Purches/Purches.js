@@ -152,7 +152,7 @@ export function Purches() {
             );
           })
         ) : (
-          <h2 id="blank-list"> Onlina Kassaga xush kelibsiz </h2>
+          <h2 id="blank-list">Onlina Kassaga xush kelibsiz </h2>
         )}
       </div>
       <div id="purches-report">

@@ -20,7 +20,7 @@
 #product > :nth-child(1) {
   font-size: 1.8rem;
   text-align: center;
-  color: #1225f3;
+  color: #2780bc;
   line-height: 130%;
   font-weight: 600;
 }
@@ -28,7 +28,7 @@
 #product > :nth-child(2) {
   font-size: 150%;
   font-weight: bold;
-  color: #2148c0;
+  color: #2780bc;
 }
 
 #product > :nth-child(2) > span {

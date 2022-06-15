@@ -1,7 +1,7 @@
 #kassir {
-  width: 480px;
-  height: 240px;
-  padding: 5% 4%;
+  width: 23vw;
+  height: 8vw;
+  padding: 1vw;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -14,29 +14,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 #kassir-left-card > figure {
-  width: 100px;
-  height: 100px;
+  width: 6vw;
+  height: 6vw;
   background-color: rgba(201, 201, 207, 0.461);
   border-radius: 50%;
   overflow: hidden;
-  border: 1px solid #17171705;
+  border: 0.1vw solid #17171705;
 }
 
 #kassir-left-card > figure > img {
   width: 100%;
-}
-
-#kassir-left-card > p {
-  font-size: 130%;
-  background-color: #171717db;
-  color: #ffffff;
-  padding: 1% 4%;
-  border-radius: 3px;
-  margin-top: 10px;
 }
 
 #kassir-right-card {
@@ -48,30 +39,10 @@
   justify-content: space-between;
 }
 
-#kassir-right-card > div {
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-#kassir-right-card > div > p {
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 135%;
-  padding: 3px 0;
+#kassir-right-card > h1 {
+  color: #3595d5;
 }
 #kassir-right-card > p {
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 135%;
+  font-size: 1vw;
+  color: #3595d5;
 }
