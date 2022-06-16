@@ -1,7 +1,7 @@
 import React from "react";
 import "./Kassir.css";
 import { useSelector } from "react-redux";
-// import NumberFormat from "react-number-format";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 export function Kassir() {
   const user = useSelector((state) => state.reUser);
@@ -10,7 +10,7 @@ export function Kassir() {
     <div id="kassir">
       <div id="kassir-left-card">
         <figure>
-          <img src={user.img} alt="" />
+          {user.img ? <img src={user.img} alt="" /> : <AccountCircleIcon />}
         </figure>
       </div>
       <div id="kassir-right-card">

@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { acLogin } from "../../Reducer/Authentication";
 import { Notifications } from "../Notifications/Notifications";
 import { Kassir } from "../Kassir/Kassir";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 export function Navbar() {
   const dispatch = useDispatch();
@@ -25,7 +26,7 @@ export function Navbar() {
             setOpen(true);
           }}
         >
-          <img src={user.img} alt="" />
+          {user.img ? <img src={user.img} alt="" /> : <AccountCircleIcon />}
         </Button>
         <p>
           <span>{user.role}</span>

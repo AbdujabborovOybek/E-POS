@@ -31,7 +31,6 @@ nav::after {
   min-width: 0 !important;
   width: 3vw;
   height: 3vw;
-  background-color: rgba(0, 255, 255, 0.63);
   border-radius: 50%;
   color: #171717;
   font-size: 1.3vw;
@@ -41,6 +40,12 @@ nav::after {
 #cashier-reference > button > img {
   width: 3vw;
   height: 3vw;
+}
+
+#cashier-reference > button > svg {
+  width: 3vw;
+  height: 3vw;
+  color: #ffffff;
 }
 
 #cashier-reference > p {
