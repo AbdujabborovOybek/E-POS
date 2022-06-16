@@ -1,6 +1,11 @@
+#kassir-modal > div > div {
+  min-width: 25vw !important;
+  max-width: 25vw !important;
+}
+
 #kassir {
-  width: 23vw;
-  height: 8vw;
+  width: 100%;
+  height: auto;
   padding: 1vw;
   display: flex;
   flex-direction: row;
@@ -41,8 +46,32 @@
 
 #kassir-right-card > h1 {
   color: #3595d5;
+  font-size: 1.7vw;
 }
 #kassir-right-card > p {
   font-size: 1vw;
   color: #3595d5;
+  padding-top: 0.5vw;
+}
+
+@media (max-width: 1440px) {
+  #kassir-modal > div > div {
+    min-width: 30vw !important;
+    max-width: 30vw !important;
+  }
+
+  #kassir-left-card > figure {
+    width: 7vw;
+    height: 7vw;
+  }
+
+  #kassir-right-card > h1 {
+    color: #3595d5;
+    font-size: 2vw;
+  }
+  #kassir-right-card > p {
+    font-size: 1.3vw;
+    color: #3595d5;
+    padding-top: 0.5vw;
+  }
 }

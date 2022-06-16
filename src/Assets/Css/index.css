@@ -3,9 +3,9 @@
   padding: 0;
   box-sizing: border-box;
   font-family: sans-serif;
-  letter-spacing: 0.1rem;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
+  letter-spacing: 0.08vw !important;
 }
 
 body {
@@ -18,4 +18,26 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+#close-modal {
+  width: 2vw !important;
+  height: 2vw !important;
+}
+
+#close-modal > svg {
+  width: 1.6vw !important;
+  height: 1.6vw !important;
+}
+
+@media (max-width: 1440px) {
+  #close-modal {
+    width: 3vw !important;
+    height: 3vw !important;
+  }
+
+  #close-modal > svg {
+    width: 2vw !important;
+    height: 2vw !important;
+  }
 }

@@ -11,6 +11,10 @@ export function Search() {
     e.preventDefault();
     dispatch(acSearch(e.target.search.value));
     e.target.search.value = "";
+
+    setTimeout(() => {
+      dispatch(acSearch(""));
+    }, 5000);
   }
 
   return (

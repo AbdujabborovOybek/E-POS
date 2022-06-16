@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addBasket } from "../../Reducer/Basket";
 import NumberFormat from "react-number-format";
 import axios from "axios";
+import { acSearch } from "../../Reducer/Search";
 
 export function Product() {
   const [open, setOpen] = useState(false);
@@ -39,7 +40,8 @@ export function Product() {
   // savatni saqlash funktsiyasi
   useEffect(() => {
     sessionStorage.setItem("basket", JSON.stringify(basket));
-  }, [basket]);
+    dispatch(acSearch(""));
+  }, [basket, dispatch]);
 
   // search function
   const result = products.filter((product) => {

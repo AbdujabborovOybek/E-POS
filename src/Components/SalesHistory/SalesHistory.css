@@ -34,10 +34,12 @@
 #sales-product > h2 {
   color: #4d9ee9;
   text-align: center;
+  font-size: 1.4vw;
 }
 #sales-product > h3 {
   color: red;
   text-align: center;
+  font-size: 1.2vw;
 }
 
 #sales-product > div {
@@ -50,12 +52,12 @@
 }
 
 #sales-product > div > p {
-  background-color: #4d9ee917;
   margin-bottom: 0.1vw;
+  font-size: 0.9vw;
 }
 
 #sales-product > div > p > span {
-  padding-right: 10px;
+  padding-right: 0.4vw;
 }
 
 #product-price {

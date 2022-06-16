@@ -5,7 +5,7 @@ nav {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 0 2%;
+  padding: 0 2vw;
   position: relative;
 }
 
@@ -29,17 +29,18 @@ nav::after {
 
 #cashier-reference > button {
   min-width: 0 !important;
-  width: 50px;
-  height: 50px;
+  width: 3vw;
+  height: 3vw;
   background-color: rgba(0, 255, 255, 0.63);
   border-radius: 50%;
   color: #171717;
-  font-size: 130%;
+  font-size: 1.3vw;
   overflow: hidden;
 }
 
 #cashier-reference > button > img {
-  width: 150%;
+  width: 3vw;
+  height: 3vw;
 }
 
 #cashier-reference > p {
@@ -48,21 +49,22 @@ nav::after {
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-evenly;
-  padding-left: 10px;
+  padding-left: 0.7vw;
 }
 
 #cashier-reference > p > :nth-child(1) {
-  font-size: 90%;
+  font-size: 0.8vw;
   color: #ccccccd1;
 }
 #cashier-reference > p > :nth-child(2) {
-  font-size: 130%;
+  font-size: 1.15vw;
   color: #ffffff;
-  padding-top: 2px;
+  padding-top: 0.1vw;
 }
 
 nav > h1 {
   color: #ffffff;
+  font-size: 1.5vw;
 }
 
 /* notifications */
@@ -76,31 +78,14 @@ nav > h1 {
 
 #notifications > button {
   min-width: 0 !important;
-  width: 50px;
-  height: 50px;
+  width: 3vw;
+  height: 3vw;
   border-radius: 50%;
   color: #ffffff;
-  margin-left: 25px;
+  margin-left: 2vw;
 }
 
-@media (max-width: 1280px) {
-  #cashier-reference > p > :nth-child(1) {
-    font-size: 80%;
-  }
-  #cashier-reference > p > :nth-child(2) {
-    font-size: 110%;
-    padding-top: 4px;
-  }
-
-  #cashier-reference > button {
-    width: 45px;
-    height: 45px;
-    font-size: 120%;
-  }
-
-  #notifications > button {
-    width: 45px;
-    height: 45px;
-    font-size: 120%;
-  }
+#notifications > button > svg {
+  width: 2vw;
+  height: 2vw;
 }
