@@ -1,4 +1,4 @@
-# Treminal
+# E-POS System
 
 # Author: Oybek Abdujabborov
 
