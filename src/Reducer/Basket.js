@@ -1,4 +1,4 @@
-const basket = JSON.parse(localStorage.getItem("basket")) || [];
+const basket = JSON.parse(sessionStorage.getItem("basket")) || [];
 
 export const reBasket = (satate = basket, action) => {
   switch (action.type) {

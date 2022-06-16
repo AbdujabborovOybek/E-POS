@@ -12,6 +12,7 @@ export function Login() {
   const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
+    dispatch(acLoading(true));
     const auth = JSON.parse(sessionStorage.getItem("auth"));
     axios("https://e-pos.my-api.uz/authentication", {
       method: "POST",
@@ -28,9 +29,11 @@ export function Login() {
         } else {
           dispatch(acLogin(false));
         }
+        dispatch(acLoading(false));
       })
       .catch((err) => {
         console.log(err);
+        dispatch(acLoading(false));
       });
   }, [dispatch]);
 

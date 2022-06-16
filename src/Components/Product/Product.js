@@ -38,7 +38,7 @@ export function Product() {
 
   // savatni saqlash funktsiyasi
   useEffect(() => {
-    localStorage.setItem("basket", JSON.stringify(basket));
+    sessionStorage.setItem("basket", JSON.stringify(basket));
   }, [basket]);
 
   // search function
