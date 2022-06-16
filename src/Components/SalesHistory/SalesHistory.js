@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "./SalesHistory.css";
-// import { Button } from "@mui/material";
-// import RefreshIcon from "@mui/icons-material/Refresh";
 import axios from "axios";
 import NumberFormat from "react-number-format";
 import { useSelector } from "react-redux";
+import { useSnackbar } from "notistack";
 
 export function SalesHistory() {
   const [history, setHistory] = useState([]);
   const user = useSelector((state) => state.reUser);
+  const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
     axios("https://e-pos.my-api.uz/view_purchase_history", {
@@ -25,7 +25,7 @@ export function SalesHistory() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [enqueueSnackbar]);
 
   return (
     <div id="salesHistory">
@@ -49,7 +49,6 @@ export function SalesHistory() {
             </div>
           );
         }
-
         return null;
       })}
     </div>
@@ -73,9 +72,6 @@ function Product(arrData) {
             renderText={(value) => <span id="product-price">{value}sum</span>}
           />
         </p>
-        {/* <Button>
-          <RefreshIcon />
-        </Button> */}
       </div>
     );
   });

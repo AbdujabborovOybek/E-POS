@@ -1,8 +1,9 @@
 #salesHistory {
   width: 25vw;
-  height: auto;
+  min-height: 20vh;
   max-height: 70vh;
   overflow-y: scroll;
+  background-color: aliceblue;
 }
 
 @media (max-width: 1290px) {
