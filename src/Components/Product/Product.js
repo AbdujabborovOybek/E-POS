@@ -62,7 +62,12 @@ export function Product() {
             >
               <p>{item.name}</p>
               <p>
-                {item.price}s <span>1{item.type}</span>
+                <NumberFormat
+                  value={item.price}
+                  displayType={"text"}
+                  thousandSeparator={true}
+                />
+                <span> 1{item.type}</span>
               </p>
             </div>
           );
@@ -92,23 +97,34 @@ export function Product() {
           <div id="dialog-content">
             <p>{product.name}</p>
             <p>
-              {product.price}sum 1{product.type}
+              <NumberFormat
+                value={product.price}
+                displayType={"text"}
+                thousandSeparator={true}
+                prefix={"so'm "}
+              />
+
+              <span> 1{product.type}</span>
             </p>
             <div id="change-count">
-              <span>
-                {(parseFloat(product.price) * parseFloat(count)).toFixed(1)}
-              </span>
               <NumberFormat
-                autoComplete="off"
-                id="count"
+                value={(product.price * count).toFixed(0)}
+                displayType={"text"}
                 thousandSeparator={true}
-                value={parseFloat(count)}
-                onValueChange={(e) => {
-                  setCount(e.value === 0 || e.value === "" ? 1 : e.value);
-                  setProduct({
-                    ...product,
-                    count: e.value === 0 || e.value === "" ? 1 : e.value,
-                  });
+              />
+
+              <NumberFormat
+                thousandSeparator={true}
+                prefix={product.type + " "}
+                placeholder="Miqdori"
+                name="amount"
+                autoComplete="off"
+                removeFormatting={true}
+                value={count}
+                onValueChange={(values) => {
+                  const { value } = values;
+                  setCount(value);
+                  setProduct({ ...product, count: value });
                 }}
               />
             </div>
@@ -118,11 +134,8 @@ export function Product() {
                 variant="contained"
                 color="error"
                 onClick={() => {
-                  setCount(parseFloat(count) >= 0 ? 1 : parseFloat(count) - 1);
-                  setProduct({
-                    ...product,
-                    count: parseFloat(count) >= 0 ? 1 : parseFloat(count) - 1,
-                  });
+                  setCount(count <= 1 ? 1 : count - 1);
+                  setProduct({ ...product, count: count <= 1 ? 1 : count - 1 });
                 }}
               >
                 <RemoveIcon fontSize="large" />
@@ -142,7 +155,12 @@ export function Product() {
               </Button>
             </div>
 
-            <Button type="submit" variant="contained" color="primary">
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              disabled={count <= 0 ? true : false}
+            >
               Ok
             </Button>
           </div>

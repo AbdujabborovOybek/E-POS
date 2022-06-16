@@ -72,7 +72,7 @@ export function Purches() {
                 key={item.id}
                 ref={el}
                 onClick={() => {
-                  setOpen(index);
+                  setOpen(item.id);
                   setCount(item.count);
                 }}
               >
@@ -81,8 +81,7 @@ export function Purches() {
                   <span>{item.name}</span>
                   <span>
                     <i>
-                      {item.count}
-                      {item.type}
+                      {item.count} {item.type}
                     </i>
                   </span>
                 </p>
@@ -92,17 +91,20 @@ export function Purches() {
                     value={(item.price * item.count).toFixed(0)}
                     displayType="text"
                     thousandSeparator={true}
-                    renderText={(value) => <span>{value}s</span>}
+                    renderText={(value) => <span>{value}</span>}
                   />
                 </p>
 
                 <div
                   id="edite-purches-item"
-                  style={open === index ? { display: "flex" } : {}}
+                  style={open === item.id ? { display: "flex" } : {}}
                 >
                   <form
                     onSubmit={(e) => {
                       e.preventDefault();
+                      if (count <= 0) {
+                        dispatch(removeBasket(item.id));
+                      }
                     }}
                   >
                     <Button
@@ -118,8 +120,8 @@ export function Purches() {
                     <NumberFormat
                       thousandSeparator={true}
                       value={count}
-                      onChange={(e) => {
-                        setCount(e.target.value === "0" ? 1 : e.target.value);
+                      onValueChange={(values) => {
+                        setCount(values.value === "0" ? 1 : values.value);
                       }}
                       autoFocus
                     />
@@ -131,7 +133,7 @@ export function Purches() {
                         setCount(false);
                         setTimeout(() => {
                           setOpen(false);
-                        }, 11);
+                        }, 1);
                       }}
                     >
                       <CheckIcon fontSize="medium" />
@@ -141,7 +143,7 @@ export function Purches() {
                         dispatch(removeBasket(item.id));
                         setTimeout(() => {
                           setOpen(false);
-                        }, 1000);
+                        }, 1);
                       }}
                     >
                       <DeleteIcon fontSize="medium" />
