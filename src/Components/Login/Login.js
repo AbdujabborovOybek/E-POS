@@ -14,7 +14,7 @@ export function Login() {
   useEffect(() => {
     dispatch(acLoading(true));
     const auth = JSON.parse(sessionStorage.getItem("auth"));
-    axios("https://e-pos.my-api.uz/authentication", {
+    axios("http://localhost:5000/api/authentication", {
       method: "POST",
       data: { ...auth },
       headers: {
@@ -40,7 +40,7 @@ export function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(acLoading(true));
-    axios("https://e-pos.my-api.uz/authentication", {
+    axios("http://localhost:5000/api/authentication", {
       method: "POST",
       data: {
         login: e.target.login.value,

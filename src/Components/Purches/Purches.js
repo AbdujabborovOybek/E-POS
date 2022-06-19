@@ -173,7 +173,7 @@ export function Purches() {
           onClick={() => {
             dispatch(acLoading(true));
 
-            axios("https://e-pos.my-api.uz/purchase_history", {
+            axios("http://localhost:5000/api/purchase_history", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",

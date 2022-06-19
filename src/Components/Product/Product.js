@@ -19,9 +19,10 @@ export function Product() {
   const basket = useSelector((state) => state.reBasket);
   const search = useSelector((state) => state.reSearch);
   const [products, setProducts] = useState([]);
+  const [update, setUpdate] = useState(false);
 
   useEffect(() => {
-    axios("https://e-pos.my-api.uz/products", {
+    axios("http://localhost:5000/api/products", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -35,7 +36,7 @@ export function Product() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [update]);
 
   // savatni saqlash funktsiyasi
   useEffect(() => {
@@ -94,10 +95,12 @@ export function Product() {
             delete product.amount;
             dispatch(addBasket(product));
             setOpen(false);
+            setUpdate(!update);
           }}
         >
           <div id="dialog-content">
             <p>{product.name}</p>
+            <p>{"Mavjud " + +product.amount + product.type}</p>
             <p>
               <NumberFormat
                 value={product.price}
@@ -143,6 +146,7 @@ export function Product() {
                 <RemoveIcon fontSize="large" />
               </Button>
               <Button
+                disabled={+product.amount - count < 1}
                 variant="contained"
                 color="primary"
                 onClick={() => {
