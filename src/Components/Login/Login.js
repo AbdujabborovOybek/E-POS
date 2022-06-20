@@ -13,29 +13,32 @@ export function Login() {
   const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
-    dispatch(acLoading(true));
-    const auth = JSON.parse(sessionStorage.getItem("auth"));
-    axios(`${HOST}/api/authentication`, {
-      method: "POST",
-      data: { ...auth },
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => {
-        if (res.data.status) {
-          dispatch(acLogin(true));
-          dispatch(acUser(res.data.user));
-        } else {
-          dispatch(acLogin(false));
-        }
-        dispatch(acLoading(false));
+    const auth = JSON.parse(sessionStorage.getItem("auth")) || false;
+
+    if (auth) {
+      dispatch(acLoading(true));
+      axios(`${HOST}/api/authentication`, {
+        method: "POST",
+        data: { ...auth },
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json",
+        },
       })
-      .catch((err) => {
-        console.log(err);
-        dispatch(acLoading(false));
-      });
+        .then((res) => {
+          if (res.data.status) {
+            dispatch(acLogin(true));
+            dispatch(acUser(res.data.user));
+          } else {
+            dispatch(acLogin(false));
+          }
+          dispatch(acLoading(false));
+        })
+        .catch((err) => {
+          console.log(err);
+          dispatch(acLoading(false));
+        });
+    }
   }, [dispatch]);
 
   const handleSubmit = (e) => {
