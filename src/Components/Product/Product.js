@@ -10,6 +10,7 @@ import { addBasket } from "../../Reducer/Basket";
 import NumberFormat from "react-number-format";
 import axios from "axios";
 import { acSearch } from "../../Reducer/Search";
+const HOST = process.env.REACT_APP_HOST;
 
 export function Product() {
   const [open, setOpen] = useState(false);
@@ -22,7 +23,7 @@ export function Product() {
   const [update, setUpdate] = useState(false);
 
   useEffect(() => {
-    axios("http://localhost:5000/api/products", {
+    axios(`${HOST}/api/products`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

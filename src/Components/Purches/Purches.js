@@ -15,6 +15,7 @@ import { Dialog } from "@mui/material";
 import { SalesHistory } from "../SalesHistory/SalesHistory";
 import CloseIcon from "@mui/icons-material/Close";
 import axios from "axios";
+const HOST = process.env.REACT_APP_HOST;
 
 export function Purches() {
   const basket = useSelector((state) => state.reBasket);
@@ -173,7 +174,7 @@ export function Purches() {
           onClick={() => {
             dispatch(acLoading(true));
 
-            axios("http://localhost:5000/api/purchase_history", {
+            axios(`${HOST}/api/purchase_history`, {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",

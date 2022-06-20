@@ -4,6 +4,7 @@ import axios from "axios";
 import NumberFormat from "react-number-format";
 import { useSelector } from "react-redux";
 import { useSnackbar } from "notistack";
+const HOST = process.env.REACT_APP_HOST;
 
 export function SalesHistory() {
   const [history, setHistory] = useState([]);
@@ -11,7 +12,7 @@ export function SalesHistory() {
   const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
-    axios("https://e-pos.my-api.uz/view_purchase_history", {
+    axios(`${HOST}/api/view_purchase_history`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

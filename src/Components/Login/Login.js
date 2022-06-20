@@ -6,6 +6,7 @@ import "./Login.css";
 import { acLoading } from "../../Reducer/Loading";
 import { useSnackbar } from "notistack";
 import axios from "axios";
+const HOST = process.env.REACT_APP_HOST;
 
 export function Login() {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ export function Login() {
   useEffect(() => {
     dispatch(acLoading(true));
     const auth = JSON.parse(sessionStorage.getItem("auth"));
-    axios("http://localhost:5000/api/authentication", {
+    axios(`${HOST}/api/authentication`, {
       method: "POST",
       data: { ...auth },
       headers: {
@@ -40,7 +41,7 @@ export function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(acLoading(true));
-    axios("http://localhost:5000/api/authentication", {
+    axios(`${HOST}/api/authentication`, {
       method: "POST",
       data: {
         login: e.target.login.value,
