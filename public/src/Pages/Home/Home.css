@@ -1,0 +1,72 @@
+.home {
+  width: 100%;
+  height: calc(100vh - 65px);
+  padding: 3%;
+  padding-right: 10px;
+  overflow: hidden;
+}
+
+.product_items {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 20px;
+}
+
+.product_items::-webkit-scrollbar {
+  width: 8px;
+  background: #fff;
+}
+
+.product_items::-webkit-scrollbar-thumb {
+  background: #ccc;
+}
+
+.product_item {
+  width: calc(100% / 3 - 15px);
+  height: 100px;
+  background: #fff;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.product_item > h1 {
+  font-size: 18px;
+}
+
+.product_item > div {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.product_item > div > span {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.product_item > div > i {
+  width: 15px;
+  height: 15px;
+  background: darkcyan;
+  border-radius: 50%;
+  transition: all 0.05s ease-in-out;
+}
+
+.product_item:hover > div > i {
+  background: red;
+}
+
+.product_item:active > div > i {
+  background: yellow;
+}

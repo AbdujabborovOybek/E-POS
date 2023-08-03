@@ -1,0 +1,42 @@
+.menu {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 320px;
+  height: 100%;
+  background: #fff;
+  z-index: 999;
+  transition: all 0.4s ease-in-out;
+  overflow: auto;
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+
+.menu.open {
+  transform: translateX(-500px);
+}
+
+.menu > nav {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 50px 0;
+}
+
+.menu > nav > a {
+  width: 100%;
+  padding: 4% 5%;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+  color: #333;
+}
+
+.menu > nav .active {
+  background: #3333;
+}
+
+.menu > nav > a > i {
+  font-style: normal;
+}

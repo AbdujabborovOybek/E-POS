@@ -1,0 +1,59 @@
+.customers {
+  width: 100%;
+  height: calc(100dvh - 65px);
+  overflow-y: auto;
+}
+
+.customers > table {
+  width: 100%;
+  border-collapse: collapse;
+  border-color: #fff;
+  color: #fff;
+}
+
+.customers > table :where(th, td) {
+  padding: 10px;
+}
+
+.customers > table thead {
+  position: sticky;
+  top: 0;
+  background: inherit;
+  background: #333;
+  border-top: 0;
+}
+
+.customers > table thead :where(th, td) {
+  padding: 0;
+}
+
+.customers > table thead input {
+  width: 100%;
+  height: 40px;
+  border: none;
+  background: none;
+  outline: none;
+  color: yellow;
+  font-size: 18px;
+  padding: 0 10px;
+}
+
+.customers > table thead input[type="number"]::-webkit-outer-spin-button,
+.customers > table thead input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.customers > table thead input::placeholder {
+  color: #ffff;
+  font-size: 18px;
+}
+
+.customers > table thead tr > :first-child {
+  width: 40px;
+}
+
+.customers a {
+  color: yellow;
+  text-decoration: none;
+}
