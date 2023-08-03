@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export const Orders = () => {
   return (
     <div className="orders">
-     
+      <Link to="/">Home</Link>
     </div>
   );
 };
