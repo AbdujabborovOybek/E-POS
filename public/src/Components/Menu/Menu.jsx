@@ -4,9 +4,16 @@ import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { acMenu } from "../../Context/menu";
 import menu from "./data";
+import { FiLogOut } from "react-icons/fi";
+
 export const Menu = memo(() => {
   const open = useSelector((state) => state.menu);
   const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    localStorage.clear();
+    window.location.reload();
+  };
 
   return (
     <div className={!open ? "menu open" : "menu"}>
@@ -24,6 +31,11 @@ export const Menu = memo(() => {
           );
         })}
       </nav>
+
+      <button className="logout_btn" onClick={handleLogout}>
+        <FiLogOut />
+        <i>Logout</i>
+      </button>
     </div>
   );
 });

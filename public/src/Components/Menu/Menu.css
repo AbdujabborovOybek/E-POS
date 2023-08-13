@@ -40,3 +40,22 @@
 .menu > nav > a > i {
   font-style: normal;
 }
+
+.logout_btn {
+  margin: 0 5%;
+  padding: 6px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border: none;
+  background: red;
+  border-radius: 4px;
+  font-size: 18px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.logout_btn i {
+  font-style: normal;
+}

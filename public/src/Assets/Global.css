@@ -6,7 +6,7 @@
   letter-spacing: 0.05rem;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
-  overscroll-behavior-y: none;
+  overscroll-behavior: none;
 }
 
 html {
