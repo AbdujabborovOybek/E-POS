@@ -1,0 +1,45 @@
+.hold {
+  width: 100%;
+  height: calc(100vh - 65px);
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.hold > table {
+  width: 100%;
+  border-collapse: collapse;
+  border-color: #fff;
+  color: #fff;
+}
+
+.hold > table :where(th, td) {
+  padding: 10px;
+}
+
+.hold > table thead {
+  position: sticky;
+  top: 0;
+  background: inherit;
+  background: #333;
+  border-top: 0;
+}
+
+.hold_action button {
+  border: none;
+  padding: 3px 10px;
+  border-radius: 4px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.hold_action button:active {
+  transform: scale(0.9);
+}
+
+.hold_action > :first-child {
+  color: red;
+}
+
+.hold_action > :last-child {
+  color: green;
+}
