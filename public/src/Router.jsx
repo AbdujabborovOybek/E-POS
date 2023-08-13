@@ -7,18 +7,22 @@ import { AddProduct } from "./Pages/AddProduct/AddProduct";
 import { Hold } from "./Pages/Hold/Hold";
 import { Profile } from "./Pages/Profile/Profile";
 import { Products } from "./Pages/Products/Products";
+import { AddCustomer } from "./Pages/AddCustomer/AddCustomer";
+import { History } from "./Pages/History/History";
 
 export const Router = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
+        <Route path="add-customer" element={<AddCustomer />} />
         <Route path="customers" element={<Customers />} />
         <Route path="orders" element={<Orders />} />
         <Route path="add-product" element={<AddProduct />} />
         <Route path="hold" element={<Hold />} />
         <Route path="profile" element={<Profile />} />
         <Route path="products" element={<Products />} />
+        <Route path="history" element={<History />} />
         <Route path="*" element={<h1>Not Found</h1>} />
       </Route>
     </Routes>

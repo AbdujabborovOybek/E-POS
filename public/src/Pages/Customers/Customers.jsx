@@ -5,25 +5,16 @@ import { Link } from "react-router-dom";
 export const Customers = () => {
   return (
     <div className="customers">
+      <div className="customers__header">
+        <input type="search" placeholder="Search by name or phone number" />
+      </div>
+
       <table border="1">
         <thead>
           <tr>
             <th>T/R</th>
-            <th>
-              <input
-                type="search"
-                autoComplete="off"
-                placeholder="Customer Name"
-              />
-            </th>
-            <th>
-              <input
-                type="number"
-                autoComplete="off"
-                placeholder="Phone Number"
-                style={{ textAlign: "center" }}
-              />
-            </th>
+            <th>Customer Name</th>
+            <th>Phone Number</th>
             <th>Orders</th>
             <th>Info</th>
           </tr>

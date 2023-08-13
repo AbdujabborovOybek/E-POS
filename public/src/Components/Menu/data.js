@@ -27,7 +27,7 @@ const menu = [
   },
   {
     name: "Add a new Customer",
-    path: "/add",
+    path: "/add-customer",
     icon: <AiOutlineUserAdd />,
   },
   {
