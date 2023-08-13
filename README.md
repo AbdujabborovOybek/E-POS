@@ -1,5 +1,5 @@
 # E-POS System
 
-[View](https://st-connection.netlify.app/).
+[View](https://e-pos.netlify.app).
 
 ![Web App](app.png)
