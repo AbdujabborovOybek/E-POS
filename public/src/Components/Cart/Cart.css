@@ -41,6 +41,7 @@
 /* ========= cart_body ======= */
 
 .cart_body {
+  position: relative;
   width: 100%;
   height: calc(100vh - 265px);
   display: flex;
@@ -49,6 +50,19 @@
   overflow-y: auto;
   gap: 10px;
   padding: 10px 0;
+  align-content: flex-start;
+}
+
+.empty_card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+
+.empty_card.active {
+  display: flex;
 }
 
 .cart_item {
